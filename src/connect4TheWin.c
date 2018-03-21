@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 					tourJoueur(board, 2, x, &score2);
 				}
 				afficheScorePlayer(score1, score2);
-			} while(!checkfull(board)); 
+			} while(!checkfull(board));
 
 			if(score2>score1)
 			{
@@ -141,7 +141,8 @@ void highscore(int high) //TODO : a optimiser !!
 	if(highsc == NULL)
 	{
 		printf("Le fichier highscores.text n'a pas ete trouve\n");
-		exit(1);
+		//exit(1);
+		return;
 	}
 	fscanf(highsc, "%d", &highs[i]);
 	do
@@ -196,7 +197,8 @@ void saveLoad(int *num, Board* board)
 	if(pfile == NULL)
 	{
 		printf("Fichier de sauvegarde introuvable \n");
-		exit(0);
+		//exit(0);
+		return;
 	}
 	for(r=board->height-1;r>=0;r--)
 	{
