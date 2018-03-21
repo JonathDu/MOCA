@@ -96,8 +96,19 @@ void TestnumColonneVide(CuTest* tc){
   for(int i=0; i<board->height; i++){
     board->board[i][1] = 'X';
   }
+  
 
   CuAssertIntEquals(tc, numColonneVide(board, 5), 6);
+
+  for(int j = 0; j<board->width-1; j++){
+    for(int i=0; i<board->height; i++){
+      if(j < 6 || (j>6 && i >=3))
+        board->board[i][j] = 'X';
+    }
+  }
+  CuAssertIntEquals(tc, numColonneVide(board, 0), 6);
+
+
   libererBoard(board);
 }
 

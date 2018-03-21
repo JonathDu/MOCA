@@ -6,7 +6,7 @@ int numColonneVide(Board *board, int numero)
 	int indiceColonne = 0;
 	while (indiceColonneVide <= numero && indiceColonne < board->width)
 	{
-		if (checkColPleine(indiceColonne + 1, board) == 0)
+		if (checkColPleine(indiceColonne, board) == 0)
 		{
 			indiceColonneVide++;
 		}
