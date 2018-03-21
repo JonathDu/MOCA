@@ -164,4 +164,7 @@ int rowNum(int num, Board* board);
  */
 void player(Board* board, int numCol, char character);
 
+
+void initTableau(Board *board);
+
 #endif

@@ -12,7 +12,7 @@ int numColonneVide(Board *board, int numero)
 		}
 		indiceColonne++;
 	}
-	return indiceColonne;
+	return indiceColonne - 1;
 }
 
 void Easy(Board *board, int *num)
