@@ -86,12 +86,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="config_8h__dep__incl.png" border="0" usemap="#_2home_2lucas_2_documents_2_m_o_c_a_2include_2config_8hdep" alt=""/></div>
 <map name="_2home_2lucas_2_documents_2_m_o_c_a_2include_2config_8hdep" id="_2home_2lucas_2_documents_2_m_o_c_a_2include_2config_8hdep">
-<area shape="rect" id="node2" href="check_8h_source.html" title="/home/lucas/Documents\l/MOCA/include/check.h" alt="" coords="371,95,535,136"/>
-<area shape="rect" id="node3" href="level_8h_source.html" title="/home/lucas/Documents\l/MOCA/include/level.h" alt="" coords="797,184,961,225"/>
+<area shape="rect" id="node2" href="check_8h.html" title="Ce fichier contient fonctions de check. " alt="" coords="371,95,535,136"/>
+<area shape="rect" id="node3" href="level_8h.html" title="Ce fichier contient les fonctions d&#39;IA. " alt="" coords="797,184,961,225"/>
 <area shape="rect" id="node4" href="connect4_the_win_8c_source.html" title="/home/lucas/Documents\l/MOCA/src/connect4TheWin.c" alt="" coords="193,273,395,315"/>
 <area shape="rect" id="node6" href="test_check_8c_source.html" title="/home/lucas/Documents\l/MOCA/test/testCheck.c" alt="" coords="701,273,868,315"/>
-<area shape="rect" id="node7" href="undo_redo_8h_source.html" title="/home/lucas/Documents\l/MOCA/include/undoRedo.h" alt="" coords="7,184,192,225"/>
-<area shape="rect" id="node10" href="score_8h_source.html" title="/home/lucas/Documents\l/MOCA/include/score.h" alt="" coords="609,95,773,136"/>
+<area shape="rect" id="node7" href="undo_redo_8h.html" title="Ce fichier contient les fonctions sur undo Redo. " alt="" coords="7,184,192,225"/>
+<area shape="rect" id="node10" href="score_8h.html" title="Ce fichier contient les fonctions sur le calcul de score. " alt="" coords="609,95,773,136"/>
 <area shape="rect" id="node12" href="config_8c_source.html" title="/home/lucas/Documents\l/MOCA/src/config.c" alt="" coords="1037,95,1201,136"/>
 <area shape="rect" id="node9" href="check_8c_source.html" title="/home/lucas/Documents\l/MOCA/src/check.c" alt="" coords="319,184,483,225"/>
 <area shape="rect" id="node5" href="level_8c_source.html" title="/home/lucas/Documents\l/MOCA/src/level.c" alt="" coords="892,273,1056,315"/>
@@ -150,9 +150,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a243cf98821d8e4a94576ac3c6f6fc048"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a243cf98821d8e4a94576ac3c6f6fc048">print</a> (<a class="el" href="struct_board.html">Board</a> *board)</td></tr>
 <tr class="memdesc:a243cf98821d8e4a94576ac3c6f6fc048"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction affiche le <a class="el" href="struct_board.html">Board</a> sur la sortie standard.  <a href="#a243cf98821d8e4a94576ac3c6f6fc048">More...</a><br /></td></tr>
 <tr class="separator:a243cf98821d8e4a94576ac3c6f6fc048"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7603d7c510c8e8cae498b4d76f8a0fce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#a7603d7c510c8e8cae498b4d76f8a0fce">exitProgramme</a> (<a class="el" href="struct_board.html">Board</a> *board, int retour)</td></tr>
-<tr class="memdesc:a7603d7c510c8e8cae498b4d76f8a0fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui quitte propremment le programme (avec libération de la mémoire)  <a href="#a7603d7c510c8e8cae498b4d76f8a0fce">More...</a><br /></td></tr>
-<tr class="separator:a7603d7c510c8e8cae498b4d76f8a0fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5f61f1c17991c93d5a9cc5956ab9411"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="config_8h.html#ae5f61f1c17991c93d5a9cc5956ab9411">rowNum</a> (int num, <a class="el" href="struct_board.html">Board</a> *board)</td></tr>
 <tr class="memdesc:ae5f61f1c17991c93d5a9cc5956ab9411"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui prend en entrée un numero de colonne, et renvoie le numéro de la 1ere ligne libre dans la colonne numéro num.  <a href="#ae5f61f1c17991c93d5a9cc5956ab9411">More...</a><br /></td></tr>
 <tr class="separator:ae5f61f1c17991c93d5a9cc5956ab9411"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -202,46 +199,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a7603d7c510c8e8cae498b4d76f8a0fce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7603d7c510c8e8cae498b4d76f8a0fce">&#9670;&nbsp;</a></span>exitProgramme()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void exitProgramme </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_board.html">Board</a> *&#160;</td>
-          <td class="paramname"><em>board</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>retour</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Fonction qui quitte propremment le programme (avec libération de la mémoire) </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">Pointeur</td><td>sur le <a class="el" href="struct_board.html">Board</a> à libérer </td></tr>
-    <tr><td class="paramname">Valeur</td><td>de fermeture du programme (exit(0), exit(1) ...) </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Rien </dd></dl>
-
-<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00083">83</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
-
-</div>
-</div>
 <a id="ad90b54db0bf131c5865cdceffff27192"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad90b54db0bf131c5865cdceffff27192">&#9670;&nbsp;</a></span>initBoard()</h2>
 
@@ -372,7 +329,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rien </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00217">217</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00211">211</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
 
 </div>
 </div>
@@ -401,7 +358,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rien </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00181">181</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00175">175</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
 
 </div>
 </div>
@@ -481,7 +438,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Numéro de la 1ere ligne libre dans la colonne numéro num </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00231">231</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00225">225</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
 
 </div>
 </div>
@@ -515,13 +472,13 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Nom</td><td>du fichier de config </td></tr>
-    <tr><td class="paramname">Point</td><td>sur le <a class="el" href="struct_board.html">Board</a> à remplir </td></tr>
+    <tr><td class="paramname">Pointeur</td><td>sur le <a class="el" href="struct_board.html">Board</a> à remplir </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rien </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00089">89</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8c_source.html#l00083">83</a> of file <a class="el" href="config_8c_source.html">config.c</a>.</p>
 
 </div>
 </div>
