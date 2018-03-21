@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['player',['player',['../config_8h.html#a20072266fe926a4981e8c563b09f92ae',1,'config.c']]],
-  ['print',['print',['../config_8h.html#a243cf98821d8e4a94576ac3c6f6fc048',1,'config.c']]]
+  ['getlignelibre',['getLigneLibre',['../check_8h.html#adda721b95b52ebe80c365d70ecae7d9f',1,'check.c']]],
+  ['getnbcolonnevide',['getNbColonneVide',['../check_8h.html#a8fad1bd387f751b6d218e5521d1a6de9',1,'check.c']]]
 ];

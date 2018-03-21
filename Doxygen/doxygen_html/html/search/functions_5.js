@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xmlformating',['XMLformating',['../config_8h.html#a04f1ca21bdd38a372baa72daac579f6a',1,'config.c']]]
+  ['initboard',['initBoard',['../config_8h.html#ad90b54db0bf131c5865cdceffff27192',1,'config.c']]]
 ];
