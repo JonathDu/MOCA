@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['width',['width',['../struct_board.html#a2474a5474cbff19523a51eb1de01cda4',1,'Board']]]
+  ['q',['q',['../struct_undo_redo.html#a39ed6f33ae9187d166e4d9d69e456ff9',1,'UndoRedo']]]
 ];

@@ -11,46 +11,46 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
 #ifdef KLEE
 #include "klee/klee.h"
 #endif
 
-
-
-#ifdef KLEE
-static inline void readInt(int* val, const char* name)
-{
-
-	klee_make_symbolic(val, sizeof(int), name);
-}
-
-#else
-static inline void readInt(int* val, const char* name)
-{
-	scanf("%d", val);
-	if(*val > 0){
-		*val = *val - 1;
-	}
-}
-#endif
-
+/**
+ * @defgroup GROUPE_UNDO_REDO Constantes de saisie de valeurs à saisir 
+ *
+ * @{
+ */
+/** Entier qui definit  ce que l'utilisateur doit saisir pour faire un UNDO */
 #define UNDO -1
+/** Entier qui definit  ce que l'utilisateur doit saisir pour faire un LOAD */
 #define LOAD -2
+/** Entier qui definit  ce que l'utilisateur doit saisir pour faire un SAVE */
 #define SAVE -3
+/** Entier qui definit  ce que l'utilisateur doit saisir pour faire un REDO */
 #define REDO -4
+/** @} */
 
-#define IA 1
+/** Entier qui definit que l'utilisateur va jouer contre un autre joueur */
 #define PLAYER 0
+/** Entier qui definit que l'utilisateur va jouer contre une IA */
+#define IA 1
 
+/**
+ * @defgroup GROUPE_NIVEAUX Constantes de niveaux 
+ *
+ * @{
+ */
+/** Entier representant le niveau facile */
 #define EASY 0
+/** Entier representant le niveau moyen */
 #define MEDIUM 1
+/** Entier representant le niveau difficile */
 #define HARD 2
-
+/** @} */
 
 /**
  * \enum UndoRedo
- * @brief Structure utilisée dans l'autre structure Board, qui concerne uniquement les mécanisme des undo/redo
+ * @brief Structure utilisée dans la structure Board. Elle concerne uniquement les mécanisme pour undo/redo
  */
 typedef struct {
 	int *redoCol; /**< c'est quoi ???  1. */
@@ -75,7 +75,7 @@ typedef struct {
 
 /**
  * \enum Board
- * @brief Structure utilisée dans dans tout le projet
+ * @brief Structure qui contient toute les informations du tableau de jeu 
  *
  * Il faut l'utilisé en passage par référence afin d'avoir qu'une seule instance de cette structure.
  */
@@ -87,21 +87,81 @@ typedef struct {
 	UndoRedo undoRedo; /**< Structure pour gérer les undo redo */
 } Board;
 
+/**
+ * \fn void readInt(int* val, const char* name)
+ * \brief Fonction qui lis un entier sur l'entrée standard
+ *
+ * \param Pointeur sur l'entier a modifier
+ * \param Nom de l'entier a modifier
+ * \return Rien
+ */
+void readInt(int* val, const char* name);
 
 /**
  * \fn Board* initBoard(char *confFile)
- * \brief Fonction d'initialisation de la structure Board en focntion du fichier de config.
+ * \brief Fonction d'initialisation de la structure Board grace au fichier de config.
  *
  * \param Nom du fichier de configuration
-.
  * \return le tableau initialisé 
  */
 Board* initBoard(char *confFile);
+
+/**
+ * \fn void libererBoard(Board* board)
+ * \brief Fonction qui libère en mémoire un Board
+ *
+ * \param Pointeur sur la structure Board à libérer
+ * \return Rien
+ */
 void libererBoard(Board* board);
+
+/**
+ * \fn void libererundoRedo(Board* board)
+ * \brief Fonction qui libère en mémoire un Board
+ *
+ * \param Pointeur sur la structure Board qui contient une structure UndoRedo à libérer
+ * \return Rien
+ */
+void libererundoRedo(Board* board);
+
+/**
+ * \fn void XMLformating(char *confFile, Board* board)
+ * \brief Fonction qui rempli la structure Board un fichier de config
+ *
+ * \param Nom du fichier de config
+ * \param Pointeur sur le Board à remplir
+ * \return Rien
+ */
 void XMLformating(char *confFile, Board* board);
+
+/**
+ * \fn void print(Board* board)
+ * \brief Fonction affiche le Board sur la sortie standard
+ *
+ * \param Pointeur sur le Board à afficher
+ * \return Rien
+ */
 void print(Board* board);
 
+/**
+ * \fn int rowNum(int num, Board* board)
+ * \brief Fonction qui prend en entrée un numero de colonne, et renvoie le numéro de la 1ere ligne libre dans la colonne numéro num
+ *
+ * \param Numéro de ligne
+ * \param Pointeur sur le Board
+ * \return Numéro de la 1ere ligne libre dans la colonne numéro num
+ */
 int rowNum(int num, Board* board);
-void player(Board* board, int num, char character);
+
+/**
+ * \fn void player(Board* board, int numCol, char character)
+ * \brief Fonction qui ajoute le pion dans la grille, et affiche la grille
+ *
+ * \param Pointeur sur le Board
+ * \param Numéro de colonne dans laquelle insérer
+ * \param Character qui va être insérer dans le tableau (X ou O)
+ * \return Rien
+ */
+void player(Board* board, int numCol, char character);
 
 #endif
