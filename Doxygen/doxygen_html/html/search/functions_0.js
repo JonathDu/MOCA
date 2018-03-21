@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initboard',['initBoard',['../config_8h.html#ad90b54db0bf131c5865cdceffff27192',1,'config.c']]]
+  ['exitprogramme',['exitProgramme',['../config_8h.html#a7603d7c510c8e8cae498b4d76f8a0fce',1,'config.c']]]
 ];
