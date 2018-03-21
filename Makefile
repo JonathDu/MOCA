@@ -1,5 +1,6 @@
 CC=gcc
-CFLAGS= -Iinclude -Wall -Werror -g -fprofile-arcs -ftest-coverage
+CFLAGS= -Iinclude -Wall -Werror -pg -g
+LDFLAGS = -pg
 
 PATH_SRC=src/
 PATH_TEST=test/
@@ -20,20 +21,26 @@ GCNO=$(PATH_SRC)check.gcno $(PATH_SRC)config.gcno $(PATH_SRC)level.gcno $(PATH_S
 GCDA=$(PATH_SRC)check.gcda $(PATH_SRC)config.gcda $(PATH_SRC)level.gcda $(PATH_SRC)score.gcda $(PATH_SRC)undoRedo.gcda $(PATH_SRC)affichage.gcda $(PATH_SRC)connect4TheWin.gcda $(PATH_TEST)testCheck.gcda $(PATH_TEST)CuTest.gcda $(PATH_TEST)AllTests.gcda
 
 
-
-
 EXEC=$(PATH_EXEC)connect4TheWin
 TESTS=$(PATH_EXEC)test
+EXECPROFILE=$(PATH_EXEC)profile
 
 all: $(EXEC)
 
 tests : $(TESTS)
 
+profiling : $(EXECPROFILE)
+
+clean :
+	rm $(EXEC) $(TESTS) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
+
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
 
-clean :
-	rm $(EXEC) $(TESTS) $(COMM) $(GCNO) $(GCDA) $(MAINCTW) $(MAINTESTS)
-
 $(TESTS) : $(FIC_TESTS)
-	$(CC) $(CFLAGS) $(FIC_TESTS) -o $(TESTS)
+	$(CC) $(CFLAGS) -fprofile-arcs -ftest-coverage $(FIC_TESTS) -o $(TESTS)
+
+$(EXECPROFILE): $(OBJS)
+	$(CC) $(CFALGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
+	./$(EXECPROFILE) $(args)
+	gprof $(EXECPROFILE)
