@@ -244,7 +244,11 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 					continue;
 				}
 				break;
+			case -10000000:
+				printf("\nErreur");
+				continue;
 			}
+
 			undoRedoLimit(num, board);
 			numOK = 1;
 		}

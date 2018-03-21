@@ -42,5 +42,3 @@ $(TESTS) : $(FIC_TESTS)
 
 $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFALGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
-	./$(EXECPROFILE) $(args)
-	gprof $(EXECPROFILE)

@@ -1,11 +1,21 @@
 #include "config.h"
 
+void purge(void)
+{
+    int c;
+    while ((c = fgetc(stdin)) != '\n' && c != EOF) {
+    }
+}
+
 void readInt(int *val, const char *name)
 {
 #ifdef KLEE
 	klee_make_symbolic(val, sizeof(int), name);
 #else
-	scanf("%d", val);
+	if(scanf("%d", val) != 1){
+		*val = -10000000;
+		purge();
+	}
 	if (*val > 0)
 	{
 		*val = *val - 1;
@@ -26,6 +36,13 @@ void initTableau(Board *board)
 	board->undoRedo.redoRow = (int *)malloc(sizeOfBoard);
 	board->undoRedo.compUndoCol = (int *)malloc(sizeOfBoard);
 	board->undoRedo.compUndoRow = (int *)malloc(sizeOfBoard);
+	board->undoRedo.q = 0;
+	board->undoRedo.c = 0;
+	board->undoRedo.d = 0;
+	board->undoRedo.k = 0;
+	board->undoRedo.l = 0;
+	board->undoRedo.z = 0;
+
 
 	for (i = 0; i < boardSize; i++)
 	{
