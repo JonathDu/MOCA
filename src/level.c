@@ -17,11 +17,13 @@ int numColonneVide(Board *board, int numero)
 
 void Easy(Board *board, int *num)
 {
+	
 	int numCol;
 	int nbColVide = getNbColonneVide(board);
 	numCol = rand() % nbColVide; //Choisi une colonne au hasard
 	numCol = numColonneVide(board, numCol);
-	board->board[getLigneLibre(board, numCol)][numCol] = 'O';
+	int ligne = getLigneLibre(board, numCol);
+	board->board[ligne][numCol] = 'O';
 	*num = numCol;
 }
 
@@ -42,7 +44,6 @@ int Medium(Board *board, char character, int *num)
 		scoreNouveau = totalScore(board, character);
 		if (scoreAncien < scoreNouveau)
 		{
-
 			board->board[ligne][i] = 'O';
 			*num = i;
 			return 1;

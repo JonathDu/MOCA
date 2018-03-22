@@ -32,7 +32,7 @@ tests : $(TESTS)
 profiling : $(EXECPROFILE)
 
 clean :
-	rm $(EXEC) $(TESTS) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
+	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)

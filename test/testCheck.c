@@ -28,6 +28,13 @@ Board* init2(){
   return board;
 }
 
+
+void TestCheckFull(CuTest *tc){
+  Board* board = init();
+  CuAssertIntEquals(tc,checkfull(board), 0);
+
+}
+
 void TestCheckEmpty(CuTest *tc) {
     Board* board = init();
     CuAssertIntEquals(tc, checkEmpty(board), 1);
@@ -42,12 +49,6 @@ void TestCheckEmpty(CuTest *tc) {
     libererBoard(board);
 }
 
-void TestCheckFull(CuTest *tc){
-  Board* board = init();
-  CuAssertIntEquals(tc,checkfull(board), 0);
-
-}
-
 void TestCheckColPleine(CuTest *tc){
   Board* board = init();
   CuAssertIntEquals(tc, checkColPleine(0, board), 0);
@@ -60,6 +61,7 @@ void TestCheckColPleine(CuTest *tc){
   CuAssertIntEquals(tc, checkColPleine(0, board), 1);
   libererBoard(board);
 }
+
 
 void TestGetLigneLibre(CuTest *tc){
   Board* board = init();
