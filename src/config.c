@@ -36,12 +36,12 @@ void initTableau(Board *board)
 	board->undoRedo.redoRow = (int *)malloc(sizeOfBoard);
 	board->undoRedo.compUndoCol = (int *)malloc(sizeOfBoard);
 	board->undoRedo.compUndoRow = (int *)malloc(sizeOfBoard);
-	board->undoRedo.q = 0;
+	board->undoRedo.nbCoupJouer = 0;
 	board->undoRedo.c = 0;
 	board->undoRedo.d = 0;
 	board->undoRedo.k = 0;
 	board->undoRedo.l = 0;
-	board->undoRedo.z = 0;
+	//board->undoRedo.z = 0;
 
 
 	for (i = 0; i < boardSize; i++)
@@ -244,8 +244,8 @@ int rowNum(int num, Board *board)
 	int i = 0;
 	for (i = 0; i < board->height; i++)
 	{
-		if (num == 0)
-			return 0;
+		//if (num == 0)
+		//	return 0;
 		if (board->board[i][num] != '\0')
 			break;
 	}

@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
 		Board *board = initBoard(argv[1]);
 
-		afficheEnteteBienvenu();
+		afficheEnteteBienvenue();
 		int choixMode;
 		do
 		{
@@ -94,7 +94,13 @@ int main(int argc, char *argv[])
 			do
 			{
 				affichageOptionRedo();
-				int numSaisie = tourJoueur(board, 1, x, &score1);
+				//int numSaisie = tourJoueur(board, 1, x, &score1);
+
+				//Pour test temps IA
+				int numSaisie = 0;
+				tourIA(board, x, &score1, choixNiveau, numSaisie);
+				
+								
 				afficheScoreIA(score1, score2);
 
 				tourIA(board, o, &score2, choixNiveau, numSaisie);
@@ -300,13 +306,16 @@ void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
 		board->undoRedo.compUndoRow[board->undoRedo.c++] = rowNum(num, board) + 1;
 		board->undoRedo.compUndoCounter = 0;
 	}
-	if (num == UNDO)
+
+	//Pas besoin de UNDO pour l'IA
+
+	/*if (num == UNDO)
 	{
 		board->undoRedo.compUndoCounter += 1;
 		board->undoRedo.c--;
 		board->undoRedo.d--;
 		board->board[board->undoRedo.compUndoRow[board->undoRedo.c]][board->undoRedo.compUndoCol[board->undoRedo.d]] = '\0';
-	}
+	}*/
 
 	print(board);
 	*score = totalScore(board, lettreIA);

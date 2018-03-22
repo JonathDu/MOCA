@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -Iinclude -Wall -Werror -pg -g
+CFLAGS= -Iinclude -Wall -Werror -pg -g -fprofile-arcs -ftest-coverage 
 LDFLAGS = -pg
 
 PATH_SRC=src/
@@ -38,7 +38,7 @@ $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
 
 $(TESTS) : $(FIC_TESTS)
-	$(CC) $(CFLAGS) -fprofile-arcs -ftest-coverage $(FIC_TESTS) -o $(TESTS)
+	$(CC) $(CFLAGS) $(FIC_TESTS) -o $(TESTS)
 
 $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFALGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)

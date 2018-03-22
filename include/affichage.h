@@ -17,7 +17,7 @@
  *
  * \return Rien
  */
-void afficheEnteteBienvenu();
+void afficheEnteteBienvenue();
 
 /**
  * \fn void afficheDemandeJoueurOuIA()

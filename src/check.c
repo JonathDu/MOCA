@@ -30,6 +30,7 @@ int checkEmpty(Board *board)
 	return 1;
 }
 
+/*
 int checkColVide(Board *board, int numCol, int numOfrow)
 {
 	if (numOfrow == (board->height - 1) && board->board[numOfrow][numCol] == '\0')
@@ -38,7 +39,7 @@ int checkColVide(Board *board, int numCol, int numOfrow)
 		return 1;
 
 	return 0;
-}
+}*/
 
 int checkColPleine(int numCol, Board *board)
 {
@@ -57,6 +58,7 @@ int checkColPleine(int numCol, Board *board)
 	return 1;
 }
 
+/*
 int checknum(int numCol, Board *board)
 {
 	while ((numCol < 0) || (numCol > board->width - 1))
@@ -67,7 +69,7 @@ int checknum(int numCol, Board *board)
 	}
 	return numCol;
 }
-
+*/
 
 int getLigneLibre(Board *board, int numCol)
 {

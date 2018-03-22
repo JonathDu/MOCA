@@ -65,10 +65,12 @@ typedef struct {
 	int *undoRow; /**< c'est quoi ???  8. */
 	int *compUndoRow; /**< c'est quoi ???  9. */
 
+	int nbCoupJouer;
+
 	int k; /**< c'est quoi ???  10. */
 	int l; /**< c'est quoi ???  11. */
-	int z; /**< c'est quoi ???  12. */
-	int q; /**< c'est quoi ???  13. */
+	//int z; /**< c'est quoi ???  12. */
+	//int q; /**< c'est quoi ???  13. */
 	int c; /**< c'est quoi ???  14. */
 	int d; /**< c'est quoi ???  15. */
 } UndoRedo;

@@ -1,6 +1,6 @@
 #include "affichage.h"
 
-void afficheEnteteBienvenu()
+void afficheEnteteBienvenue()
 {
     printf("\n\n                     **** WELCOME TO THE GAME ****\n\n");
 }
