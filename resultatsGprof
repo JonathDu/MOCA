@@ -1,0 +1,281 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 60.95      0.78     0.78  2675798     0.29     0.29  totalScore
+ 20.32      1.04     0.26   311320     0.84     0.84  print
+  3.91      1.09     0.05  1805879     0.03     0.03  getLigneLibre
+  3.13      1.13     0.04   772097     0.05     0.05  checkColPleine
+  3.13      1.17     0.04   304080     0.13     2.55  Medium
+  3.13      1.21     0.04   170207     0.24     0.24  getNbColonneVide
+  1.56      1.23     0.02                             __afl_setup
+  0.78      1.24     0.01   170207     0.06     0.29  numColonneVide
+  0.78      1.25     0.01     7240     1.38     1.38  XMLformating
+  0.78      1.26     0.01     7240     1.38     2.76  initBoard
+  0.78      1.27     0.01                             __afl_maybe_log
+  0.78      1.28     0.01                             __afl_store
+  0.00      1.28     0.00   304080     0.00     0.00  afficheScoreIA
+  0.00      1.28     0.00   304080     0.00     0.00  rowNum
+  0.00      1.28     0.00   304080     0.00     3.99  tourIA
+  0.00      1.28     0.00   170207     0.00     0.56  Easy
+  0.00      1.28     0.00   152040     0.00     0.00  affichageOptionRedo
+  0.00      1.28     0.00   152040     0.00     0.00  checkfull
+  0.00      1.28     0.00    14480     0.00     0.00  readInt
+  0.00      1.28     0.00     7240     0.00     0.00  afficheDemandeJoueurOuIA
+  0.00      1.28     0.00     7240     0.00     0.00  afficheDemandeSelectionNiveau
+  0.00      1.28     0.00     7240     0.00     0.00  afficheEnteteBienvenue
+  0.00      1.28     0.00     7240     0.00     0.00  highscore
+  0.00      1.28     0.00     7240     0.00     0.00  initTableau
+  0.00      1.28     0.00     7240     0.00     0.00  libererBoard
+  0.00      1.28     0.00     7240     0.00     0.00  libererundoRedo
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.78% of 1.28 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     96.9    0.00    1.24                 main [1]
+                0.00    1.21  304080/304080      tourIA [2]
+                0.01    0.01    7240/7240        initBoard [11]
+                0.01    0.00    7240/311320      print [5]
+                0.00    0.00  304080/304080      afficheScoreIA [16]
+                0.00    0.00  152040/152040      affichageOptionRedo [18]
+                0.00    0.00  152040/152040      checkfull [19]
+                0.00    0.00   14480/14480       readInt [20]
+                0.00    0.00    7240/7240        afficheEnteteBienvenue [23]
+                0.00    0.00    7240/7240        afficheDemandeJoueurOuIA [21]
+                0.00    0.00    7240/7240        afficheDemandeSelectionNiveau [22]
+                0.00    0.00    7240/7240        highscore [24]
+                0.00    0.00    7240/7240        libererBoard [26]
+-----------------------------------------------
+                0.00    1.21  304080/304080      main [1]
+[2]     94.8    0.00    1.21  304080         tourIA [2]
+                0.04    0.74  304080/304080      Medium [4]
+                0.25    0.00  304080/311320      print [5]
+                0.00    0.09  170207/170207      Easy [6]
+                0.09    0.00  304080/2675798     totalScore [3]
+                0.00    0.00  304080/304080      rowNum [17]
+-----------------------------------------------
+                0.09    0.00  304080/2675798     tourIA [2]
+                0.69    0.00 2371718/2675798     Medium [4]
+[3]     60.9    0.78    0.00 2675798         totalScore [3]
+-----------------------------------------------
+                0.04    0.74  304080/304080      tourIA [2]
+[4]     60.7    0.04    0.74  304080         Medium [4]
+                0.69    0.00 2371718/2675798     totalScore [3]
+                0.05    0.00 1635672/1805879     getLigneLibre [7]
+-----------------------------------------------
+                0.01    0.00    7240/311320      main [1]
+                0.25    0.00  304080/311320      tourIA [2]
+[5]     20.3    0.26    0.00  311320         print [5]
+-----------------------------------------------
+                0.00    0.09  170207/170207      tourIA [2]
+[6]      7.4    0.00    0.09  170207         Easy [6]
+                0.01    0.04  170207/170207      numColonneVide [8]
+                0.04    0.00  170207/170207      getNbColonneVide [10]
+                0.00    0.00  170207/1805879     getLigneLibre [7]
+-----------------------------------------------
+                0.00    0.00  170207/1805879     Easy [6]
+                0.05    0.00 1635672/1805879     Medium [4]
+[7]      3.9    0.05    0.00 1805879         getLigneLibre [7]
+-----------------------------------------------
+                0.01    0.04  170207/170207      Easy [6]
+[8]      3.9    0.01    0.04  170207         numColonneVide [8]
+                0.04    0.00  772097/772097      checkColPleine [9]
+-----------------------------------------------
+                0.04    0.00  772097/772097      numColonneVide [8]
+[9]      3.1    0.04    0.00  772097         checkColPleine [9]
+-----------------------------------------------
+                0.04    0.00  170207/170207      Easy [6]
+[10]     3.1    0.04    0.00  170207         getNbColonneVide [10]
+-----------------------------------------------
+                0.01    0.01    7240/7240        main [1]
+[11]     1.6    0.01    0.01    7240         initBoard [11]
+                0.01    0.00    7240/7240        XMLformating [13]
+                0.00    0.00    7240/7240        initTableau [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     1.6    0.02    0.00                 __afl_setup [12]
+-----------------------------------------------
+                0.01    0.00    7240/7240        initBoard [11]
+[13]     0.8    0.01    0.00    7240         XMLformating [13]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]     0.8    0.01    0.00                 __afl_maybe_log [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     0.8    0.01    0.00                 __afl_store [15]
+-----------------------------------------------
+                0.00    0.00  304080/304080      main [1]
+[16]     0.0    0.00    0.00  304080         afficheScoreIA [16]
+-----------------------------------------------
+                0.00    0.00  304080/304080      tourIA [2]
+[17]     0.0    0.00    0.00  304080         rowNum [17]
+-----------------------------------------------
+                0.00    0.00  152040/152040      main [1]
+[18]     0.0    0.00    0.00  152040         affichageOptionRedo [18]
+-----------------------------------------------
+                0.00    0.00  152040/152040      main [1]
+[19]     0.0    0.00    0.00  152040         checkfull [19]
+-----------------------------------------------
+                0.00    0.00   14480/14480       main [1]
+[20]     0.0    0.00    0.00   14480         readInt [20]
+-----------------------------------------------
+                0.00    0.00    7240/7240        main [1]
+[21]     0.0    0.00    0.00    7240         afficheDemandeJoueurOuIA [21]
+-----------------------------------------------
+                0.00    0.00    7240/7240        main [1]
+[22]     0.0    0.00    0.00    7240         afficheDemandeSelectionNiveau [22]
+-----------------------------------------------
+                0.00    0.00    7240/7240        main [1]
+[23]     0.0    0.00    0.00    7240         afficheEnteteBienvenue [23]
+-----------------------------------------------
+                0.00    0.00    7240/7240        main [1]
+[24]     0.0    0.00    0.00    7240         highscore [24]
+-----------------------------------------------
+                0.00    0.00    7240/7240        initBoard [11]
+[25]     0.0    0.00    0.00    7240         initTableau [25]
+-----------------------------------------------
+                0.00    0.00    7240/7240        main [1]
+[26]     0.0    0.00    0.00    7240         libererBoard [26]
+                0.00    0.00    7240/7240        libererundoRedo [27]
+-----------------------------------------------
+                0.00    0.00    7240/7240        libererBoard [26]
+[27]     0.0    0.00    0.00    7240         libererundoRedo [27]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2015 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+   [6] Easy                   [23] afficheEnteteBienvenue [26] libererBoard
+   [4] Medium                 [16] afficheScoreIA         [27] libererundoRedo
+  [13] XMLformating            [9] checkColPleine          [8] numColonneVide
+  [14] __afl_maybe_log        [19] checkfull               [5] print
+  [12] __afl_setup (check.c)   [7] getLigneLibre          [20] readInt
+  [15] __afl_store (check.c)  [10] getNbColonneVide       [17] rowNum
+  [18] affichageOptionRedo    [24] highscore               [3] totalScore
+  [21] afficheDemandeJoueurOuIA [11] initBoard             [2] tourIA
+  [22] afficheDemandeSelectionNiveau [25] initTableau
