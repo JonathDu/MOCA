@@ -73,10 +73,10 @@ int checknum(int numCol, Board *board)
 
 int getLigneLibre(Board *board, int numCol)
 {
-	if (checkColPleine(numCol, board) == 1)
+	/*if (checkColPleine(numCol, board) == 1)
 	{
 		return -2;
-	}
+	}*/
 	for (int i = board->height - 1; i >= 0; i--)
 	{
 		if (board->board[i][numCol] == '\0')
@@ -84,7 +84,7 @@ int getLigneLibre(Board *board, int numCol)
 			return i;
 		}
 	}
-	return -1;
+	return -2;
 }
 
 int getNbColonneVide(Board *board)

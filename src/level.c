@@ -71,7 +71,7 @@ void Hard(Board *board, int *num)
 			continue;
 		}
 		board->board[ligne][i] = o;
-		if (Medium(board, x, num) == 1)
+		if (Medium(board, o, num) == 1)
 		{
 			board->board[getLigneLibre(board, *num) + 1][*num] = '\0';
 			*num = i;

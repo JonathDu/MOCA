@@ -2,9 +2,10 @@
 
 void purge(void)
 {
-    int c;
-    while ((c = fgetc(stdin)) != '\n' && c != EOF) {
-    }
+	int c;
+	while ((c = fgetc(stdin)) != '\n' && c != EOF)
+	{
+	}
 }
 
 void readInt(int *val, const char *name)
@@ -12,7 +13,8 @@ void readInt(int *val, const char *name)
 #ifdef KLEE
 	klee_make_symbolic(val, sizeof(int), name);
 #else
-	if(scanf("%d", val) != 1){
+	if (scanf("%d", val) != 1)
+	{
 		*val = -10000000;
 		purge();
 	}
@@ -41,8 +43,6 @@ void initTableau(Board *board)
 	board->undoRedo.d = 0;
 	board->undoRedo.k = 0;
 	board->undoRedo.l = 0;
-	//board->undoRedo.z = 0;
-
 
 	for (i = 0; i < boardSize; i++)
 	{
@@ -124,7 +124,7 @@ void XMLformating(char *confFile, Board *board)
 			{
 				flag1 = 1;
 				start = ftell(file);
-				            break;
+				break;
 			}
 		}
 	}
@@ -244,8 +244,6 @@ int rowNum(int num, Board *board)
 	int i = 0;
 	for (i = 0; i < board->height; i++)
 	{
-		//if (num == 0)
-		//	return 0;
 		if (board->board[i][num] != '\0')
 			break;
 	}

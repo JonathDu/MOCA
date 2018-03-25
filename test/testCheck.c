@@ -2,6 +2,7 @@
 #include "check.h"
 #include "config.h"
 #include "level.h"
+#include "utilTest.h"
 
 
 char* StrToUpper(char* str) {
@@ -32,7 +33,14 @@ Board* init2(){
 void TestCheckFull(CuTest *tc){
   Board* board = init();
   CuAssertIntEquals(tc,checkfull(board), 0);
-
+  for(int i =0; i< board->height; i++){
+    for(int j=0;j< board->width;j++){
+      board->board[i][j] = 'O';
+    }
+  }
+  
+  CuAssertIntEquals(tc,checkfull(board), 1);
+  
 }
 
 void TestCheckEmpty(CuTest *tc) {
@@ -113,6 +121,8 @@ void TestnumColonneVide(CuTest* tc){
 
   libererBoard(board);
 }
+
+
 
 CuSuite* StrUtilGetSuite() {
     CuSuite* suite = CuSuiteNew();
