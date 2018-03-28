@@ -78,11 +78,11 @@ Board *initBoard(char *confFile)
 
 void libererBoard(Board *board)
 {
+	libererundoRedo(board);
 	for (int i = 0; i < board->height; i++)
 	{
 		free(board->board[i]);
 	}
-	libererundoRedo(board);
 	free(board->board);
 	free(board);
 }

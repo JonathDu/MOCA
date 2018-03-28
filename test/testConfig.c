@@ -113,6 +113,11 @@ void TestHard(CuTest *tc){
     CuAssertIntEquals(tc, board2->board[board2->height-4][4] == 'O', 1);
     print(board2);
 
+    Board* board3 = init2();
+    Hard(board3, &num);
+    CuAssertIntEquals(tc, checkEmpty(board), 0);
+    print(board3);
+
 }
 
 void TestScore(CuTest *tc){

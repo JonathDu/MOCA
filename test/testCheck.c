@@ -10,7 +10,7 @@ char* StrToUpper(char* str) {
 }
 
 Board* init(){
-  Board* board = malloc(sizeof(board));
+  Board* board = malloc(sizeof(Board));
   board->height = 3;
   board->width = 3;
   UndoRedo* undoRedo = malloc(sizeof(UndoRedo));
@@ -20,7 +20,7 @@ Board* init(){
 }
 
 Board* init2(){
-  Board* board = malloc(sizeof(board));
+  Board* board = malloc(sizeof(Board));
   board->height = 6;
   board->width = 7;
   UndoRedo* undoRedo = malloc(sizeof(UndoRedo));
@@ -119,7 +119,7 @@ void TestnumColonneVide(CuTest* tc){
   CuAssertIntEquals(tc, numColonneVide(board, 0), 6);
 
 
-  ////libererBoard(board);
+  libererBoard(board);
 }
 
 
