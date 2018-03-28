@@ -18,7 +18,7 @@ void TestRowNum(CuTest *tc){
   CuAssertIntEquals(tc,rowNum(0, board), -1);
   CuAssertIntEquals(tc,rowNum(2, board), 2);
   CuAssertIntEquals(tc,rowNum(1, board), 0);
-  
+
 
 }
 
@@ -80,7 +80,7 @@ void TestMedium(CuTest *tc){
     print(board);
     CuAssertIntEquals(tc, num, 1);
     CuAssertIntEquals(tc, board->board[board->height-4][1] != '\0', 1);
-    
+
 }
 
 void TestHard(CuTest *tc){
@@ -103,7 +103,7 @@ void TestHard(CuTest *tc){
     CuAssertIntEquals(tc, num, 3);
     CuAssertIntEquals(tc, board->board[board->height-4][3] == 'O', 1);
     print(board);
-    
+
     Board* board2 = init2();
     board2->board[board2->height-1][4] = 'O';
     board2->board[board2->height-2][4] = 'O';
@@ -112,7 +112,7 @@ void TestHard(CuTest *tc){
     CuAssertIntEquals(tc, num, 4);
     CuAssertIntEquals(tc, board2->board[board2->height-4][4] == 'O', 1);
     print(board2);
-    
+
 }
 
 void TestScore(CuTest *tc){
@@ -129,7 +129,7 @@ void TestScore(CuTest *tc){
     CuAssertIntEquals(tc, totalScore(board, 'O'), 17);
     board->board[3][1] = 'X';
     CuAssertIntEquals(tc, totalScore(board, 'O'), 13);
-    
+
 }
 
 CuSuite* testConfigGetSuite() {
@@ -142,7 +142,7 @@ CuSuite* testConfigGetSuite() {
     SUITE_ADD_TEST(suite, TestMedium);
     SUITE_ADD_TEST(suite, TestHard);
     SUITE_ADD_TEST(suite, TestScore);
-    
-    
+
+
     return suite;
 }

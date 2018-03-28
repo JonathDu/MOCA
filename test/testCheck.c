@@ -38,9 +38,9 @@ void TestCheckFull(CuTest *tc){
       board->board[i][j] = 'O';
     }
   }
-  
+
   CuAssertIntEquals(tc,checkfull(board), 1);
-  
+
 }
 
 void TestCheckEmpty(CuTest *tc) {
@@ -54,7 +54,7 @@ void TestCheckEmpty(CuTest *tc) {
       }
     }
     CuAssertIntEquals(tc, checkEmpty(board), 0);
-    libererBoard(board);
+    //libererBoard(board);
 }
 
 void TestCheckColPleine(CuTest *tc){
@@ -67,7 +67,7 @@ void TestCheckColPleine(CuTest *tc){
     }
   }
   CuAssertIntEquals(tc, checkColPleine(0, board), 1);
-  libererBoard(board);
+  //libererBoard(board);
 }
 
 
@@ -80,7 +80,7 @@ void TestGetLigneLibre(CuTest *tc){
   CuAssertIntEquals(tc, getLigneLibre(board, 0), -2);
   CuAssertIntEquals(tc, getLigneLibre(board, 1), 2);
   CuAssertIntEquals(tc, getLigneLibre(board, 2), 1);
-  libererBoard(board);
+  //libererBoard(board);
 }
 
 void TestGetNbColonneVide(CuTest *tc){
@@ -98,7 +98,7 @@ void TestGetNbColonneVide(CuTest *tc){
   CuAssertIntEquals(tc, getNbColonneVide(board), 1);
   board->board[0][2] = 'X';
   CuAssertIntEquals(tc, getNbColonneVide(board), 0);
-  libererBoard(board);
+  //libererBoard(board);
 }
 
 void TestnumColonneVide(CuTest* tc){
@@ -106,7 +106,7 @@ void TestnumColonneVide(CuTest* tc){
   for(int i=0; i<board->height; i++){
     board->board[i][1] = 'X';
   }
-  
+
 
   CuAssertIntEquals(tc, numColonneVide(board, 5), 6);
 
@@ -119,7 +119,7 @@ void TestnumColonneVide(CuTest* tc){
   CuAssertIntEquals(tc, numColonneVide(board, 0), 6);
 
 
-  libererBoard(board);
+  ////libererBoard(board);
 }
 
 

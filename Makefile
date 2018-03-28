@@ -1,5 +1,6 @@
 CC=gcc
-CFLAGS= -Iinclude -Wall -Werror -g -fprofile-arcs -ftest-coverage 
+CC_AFL=afl-gcc
+CFLAGS= -Iinclude -Wall -Werror -g -fprofile-arcs -ftest-coverage
 LDFLAGS = -pg -lgcov --coverage
 
 PATH_SRC=src/
@@ -24,12 +25,18 @@ GCDA=$(PATH_SRC)check.gcda $(PATH_SRC)config.gcda $(PATH_SRC)level.gcda $(PATH_S
 EXEC=$(PATH_EXEC)connect4TheWin
 TESTS=$(PATH_EXEC)test
 EXECPROFILE=$(PATH_EXEC)profile
+AFL=$(PATH_EXEC)afl
 
 all: $(EXEC)
 
 tests : $(TESTS)
 
 profiling : $(EXECPROFILE)
+
+klee :
+	./cl.sh
+
+afl : $(AFL)
 
 clean :
 	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
@@ -42,3 +49,6 @@ $(TESTS) : $(FIC_TESTS)
 
 $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFALGS) -pg $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
+
+$(AFL) : $(OBJS)
+	$(CC_AFL) $(CFLAGS) $(OBJS) -o $(EXEC)
