@@ -124,7 +124,8 @@ int main(int argc, char *argv[])
 				printf("\nUser WINS\n");
 			}
 		}
-		//highscore(high);
+		
+		highscore(high);
 		printf("\nif you you want to play again press y, else press any key\n");
 		scanf("\n%c", &playAgain);
 		libererBoard(board);
@@ -136,6 +137,9 @@ int main(int argc, char *argv[])
 
 void highscore(int high) //TODO : a optimiser !!
 {
+	#ifdef KLEE
+		printf("");
+	#else
 	int i = 0, n = 0, temp;
 	int highs[highscores];
 	FILE *highsc = fopen("highscores.text", "r");
@@ -185,6 +189,7 @@ void highscore(int high) //TODO : a optimiser !!
 	}
 	printf("\n\t\t*****");
 	fclose(highsc);
+	#endif
 }
 
 //si le numero passe en param est LOAD, alors on va lire dans le fichier save.txt
