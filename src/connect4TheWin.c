@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
 				printf("\nUser WINS\n");
 			}
 		}
-		highscore(high);
+		//highscore(high);
 		printf("\nif you you want to play again press y, else press any key\n");
 		scanf("\n%c", &playAgain);
 		libererBoard(board);
@@ -206,7 +206,7 @@ void saveLoad(int *num, Board *board)
 			switch (*num)
 			{
 			case LOAD:
-				fscanf(pfile, "%c", &(board->board[r][t]));
+				//fscanf(pfile, "%c", &(board->board[r][t]));
 				break;
 			case SAVE:
 				fprintf(pfile, "%c", board->board[r][t]);
@@ -229,50 +229,51 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 		printf("\nPlayer %i : Enter number of the column : ", numJoueur);
 		readInt(&num, "num");
 		saveLoad(&num, board);
-
-		if (num < 0)
-		{
-			//////////////////////////////
-			//UNDO REDO SAVE LOAD/////////
-			switch (num)
+		if(num > -20){
+			if (num < 0)
 			{
-			case UNDO:
-				if (checkEmpty(board))
+				//////////////////////////////
+				//UNDO REDO SAVE LOAD/////////
+				switch (num)
 				{
-					printf("\nCannot undo !");
+				case UNDO:
+					if (checkEmpty(board))
+					{
+						printf("\nCannot undo !");
+						continue;
+					}
+					break;
+				case REDO:
+					if (board->undoRedo.redoCounter >= board->undoRedo.undoCounter)
+					{
+						printf("\nCannot redo !");
+						continue;
+					}
+					break;
+				case -10000000:
+					printf("\nErreur");
 					continue;
 				}
-				break;
-			case REDO:
-				if (board->undoRedo.redoCounter >= board->undoRedo.undoCounter)
+
+				undoRedoLimit(num, board);
+				numOK = 1;
+			}
+			else
+			{
+				//////////////////////////////
+				//NUM COL/////////////////////
+				if ((num < 0) || (num > board->width - 1)) //si numCol depasse le board, on resaisie
 				{
-					printf("\nCannot redo !");
+					printf("\nBad num col ! Please enter a number between 1 and %d.", board->width);
 					continue;
 				}
-				break;
-			case -10000000:
-				printf("\nErreur");
-				continue;
+				else if (checkColPleine(num, board)) //si la colonne est pleine, on resaisi
+				{
+					printf("\nFull col ! Please enter another num of col.");
+					continue;
+				}
+				numOK = 1;
 			}
-
-			undoRedoLimit(num, board);
-			numOK = 1;
-		}
-		else
-		{
-			//////////////////////////////
-			//NUM COL/////////////////////
-			if ((num < 0) || (num > board->width - 1)) //si numCol depasse le board, on resaisie
-			{
-				printf("\nBad num col ! Please enter a number between 1 and %d.", board->width);
-				continue;
-			}
-			else if (checkColPleine(num, board)) //si la colonne est pleine, on resaisi
-			{
-				printf("\nFull col ! Please enter another num of col.");
-				continue;
-			}
-			numOK = 1;
 		}
 	} while (!numOK);
 
