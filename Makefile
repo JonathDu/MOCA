@@ -4,14 +4,15 @@ CFLAGS= -Iinclude -Wall -g -fprofile-arcs -ftest-coverage
 LDFLAGS = -pg -lgcov --coverage
 
 PATH_SRC=src/
-PATH_TEST=test/
+PATH_UNIT_TEST=Tests/UnitTests/
+PATH_COV_TEST=Tests/CoverageTests/
 PATH_EXEC=bin/
 
 COMM=$(PATH_SRC)check.o $(PATH_SRC)config.o $(PATH_SRC)level.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
 
-MAINTESTS=$(PATH_TEST)testCheck.o $(PATH_TEST)testConfig.o $(PATH_TEST)CuTest.o $(PATH_TEST)AllTests.o
+MAINTESTS=$(PATH_UNIT_TEST)testCheck.o $(PATH_UNIT_TEST)testConfig.o $(PATH_UNIT_TEST)CuTest.o $(PATH_UNIT_TEST)AllTests.o
 
 OBJS=$(COMM) $(MAINCTW)
 
@@ -34,7 +35,7 @@ tests : $(TESTS)
 profiling : $(EXECPROFILE)
 
 klee :
-	./cl.sh
+	./Tests/Klee/cl.sh
 
 afl : $(AFL)
 
@@ -42,7 +43,7 @@ clean :
 	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
 
 $(EXEC) : $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC); mv $(PATH_SRC)*.o $(PATH_EXEC)
 
 $(TESTS) : $(FIC_TESTS)
 	$(CC) $(CFLAGS) $(FIC_TESTS) -o $(TESTS)
