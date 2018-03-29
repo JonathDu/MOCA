@@ -99,8 +99,8 @@ int main(int argc, char *argv[])
 				//Pour test temps IA
 				int numSaisie = 0;
 				tourIA(board, x, &score1, choixNiveau, numSaisie);
-				
-								
+
+
 				afficheScoreIA(score1, score2);
 
 				tourIA(board, o, &score2, choixNiveau, numSaisie);
@@ -124,7 +124,7 @@ int main(int argc, char *argv[])
 				printf("\nUser WINS\n");
 			}
 		}
-		
+
 		highscore(high);
 		printf("\nif you you want to play again press y, else press any key\n");
 		scanf("\n%c", &playAgain);
@@ -260,7 +260,7 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 					continue;
 				}
 
-				undoRedoLimit(num, board);
+				//undoRedoLimit(num, board);
 				numOK = 1;
 			}
 			else

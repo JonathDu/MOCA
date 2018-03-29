@@ -28,10 +28,10 @@ void undoRedo(char *x, Board *board, int num);
  * \fn void undoRedoLimit(int num, Board *board)
  * \brief Fonction qui ????
  *
- * \param Param ????
+ * \param Character du joueur
  * \param Pointeur sur le Board
  * \return Retourne le score
  */
-void undoRedoLimit(int num, Board *board);
+//void undoRedoLimit(int num, Board *board);
 
 #endif

@@ -186,6 +186,7 @@ void XMLformating(char *confFile, Board *board)
 		board->highscores = 5;
 		printf("Incorrect file format, default value of highscore list (5) is loaded\n");
 	}
+
 	fclose(file);
 }
 

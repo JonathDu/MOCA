@@ -23,6 +23,8 @@ void undoRedo(char *x, Board *board, int num)
 		board->board[board->undoRedo.undoRow[(board->undoRedo.nbCoupJouer - 1)]][board->undoRedo.undoCol[(board->undoRedo.nbCoupJouer - 1)]] = '\0';
 		print(board);
 		board->undoRedo.nbCoupJouer -= 1;
+		board->undoRedo.undoCounter += 1;
+
 	}
 	else if (num == REDO)
 	{
@@ -34,6 +36,8 @@ void undoRedo(char *x, Board *board, int num)
 			board->undoRedo.nbCoupJouer += 1;
 			board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = board->undoRedo.redoCol[board->undoRedo.nbCoupJouer];
 			board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = board->undoRedo.redoRow[board->undoRedo.nbCoupJouer];
+			board->undoRedo.redoCounter += 1;
+
 		}
 	}
 	else if (num == LOAD)
@@ -55,7 +59,7 @@ void undoRedo(char *x, Board *board, int num)
 	}
 }
 
-void undoRedoLimit(int num, Board *board)
+/*void undoRedoLimit(int num, Board *board)
 {
 	if (num == UNDO)
 	{
@@ -70,4 +74,4 @@ void undoRedoLimit(int num, Board *board)
 		board->undoRedo.undoCounter = 0;
 		board->undoRedo.redoCounter = 0;
 	}
-}
+}*/

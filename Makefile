@@ -1,6 +1,6 @@
 CC=gcc
 CC_AFL=afl-gcc
-CFLAGS= -Iinclude -Wall -Werror -g -fprofile-arcs -ftest-coverage
+CFLAGS= -Iinclude -Wall -g -fprofile-arcs -ftest-coverage
 LDFLAGS = -pg -lgcov --coverage
 
 PATH_SRC=src/
@@ -17,9 +17,9 @@ OBJS=$(COMM) $(MAINCTW)
 
 FIC_TESTS=$(MAINTESTS) $(COMM)
 
-GCNO=$(PATH_SRC)check.gcno $(PATH_SRC)config.gcno $(PATH_SRC)level.gcno $(PATH_SRC)score.gcno $(PATH_SRC)undoRedo.gcno $(PATH_SRC)affichage.gcno $(PATH_SRC)connect4TheWin.gcno $(PATH_TEST)testCheck.gcno $(PATH_TEST)testConfig.gcno $(PATH_TEST)CuTest.gcno $(PATH_TEST)AllTests.gcno
+GCNO=$(PATH_SRC)check.gcno $(PATH_SRC)config.gcno $(PATH_SRC)level.gcno $(PATH_SRC)score.gcno $(PATH_SRC)undoRedo.gcno $(PATH_SRC)affichage.gcno $(PATH_SRC)connect4TheWin.gcno $(PATH_TEST)testCheck.gcno $(PATH_TEST)testUndoRedo.gcno $(PATH_TEST)testConfig.gcno $(PATH_TEST)CuTest.gcno $(PATH_TEST)AllTests.gcno
 
-GCDA=$(PATH_SRC)check.gcda $(PATH_SRC)config.gcda $(PATH_SRC)level.gcda $(PATH_SRC)score.gcda $(PATH_SRC)undoRedo.gcda $(PATH_SRC)affichage.gcda $(PATH_SRC)connect4TheWin.gcda $(PATH_TEST)testCheck.gcda $(PATH_TEST)testConfig.gcda $(PATH_TEST)CuTest.gcda $(PATH_TEST)AllTests.gcda
+GCDA=$(PATH_SRC)check.gcda $(PATH_SRC)config.gcda $(PATH_SRC)level.gcda $(PATH_SRC)score.gcda $(PATH_SRC)undoRedo.gcda $(PATH_SRC)affichage.gcda $(PATH_SRC)connect4TheWin.gcda $(PATH_TEST)testCheck.gcda $(PATH_TEST)testUndoRedo.gcda $(PATH_TEST)testConfig.gcda $(PATH_TEST)CuTest.gcda $(PATH_TEST)AllTests.gcda
 
 
 EXEC=$(PATH_EXEC)connect4TheWin

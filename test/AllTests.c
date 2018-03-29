@@ -21,6 +21,7 @@ extern void TestEasy(CuTest*);
 extern void TestMedium(CuTest*);
 extern void TestHard(CuTest*);
 extern void TestScore(CuTest*);
+extern void TestUndoRedo(CuTest*);
 
 
 void RunAllTests(void) 
@@ -43,6 +44,7 @@ void RunAllTests(void)
     SUITE_ADD_TEST(suite, TestMedium);
     SUITE_ADD_TEST(suite, TestHard);
     SUITE_ADD_TEST(suite, TestScore);
+    SUITE_ADD_TEST(suite, TestUndoRedo);
 
     CuSuiteRun(suite);
     CuSuiteSummary(suite, output);

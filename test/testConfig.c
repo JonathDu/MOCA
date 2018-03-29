@@ -1,9 +1,7 @@
 #include "CuTest.h"
-#include "config.h"
 #include "level.h"
 #include "utilTest.h"
-
-
+#include "undoRedo.h"
 
 
 void TestRowNum(CuTest *tc){
@@ -18,8 +16,6 @@ void TestRowNum(CuTest *tc){
   CuAssertIntEquals(tc,rowNum(0, board), -1);
   CuAssertIntEquals(tc,rowNum(2, board), 2);
   CuAssertIntEquals(tc,rowNum(1, board), 0);
-
-
 }
 
 void TestPlayer(CuTest *tc){
@@ -137,6 +133,22 @@ void TestScore(CuTest *tc){
 
 }
 
+void TestUndoRedo(CuTest *tc){
+  Board* board = init2();
+  char x = 'X';
+  undoRedo(&x,board, 2);
+  CuAssertIntEquals(tc, getLigneLibre(board, 2), 4);
+  undoRedo(&x,board, -1);
+  CuAssertIntEquals(tc, getLigneLibre(board, 2), 5);
+  undoRedo(&x,board, -4);
+  CuAssertIntEquals(tc, getLigneLibre(board, 2), 4);
+  undoRedo(&x,board, -1);
+  CuAssertIntEquals(tc, getLigneLibre(board, 2), 5);
+undoRedo(&x,board, -2);
+undoRedo(&x,board, -3);
+
+}
+
 CuSuite* testConfigGetSuite() {
     CuSuite* suite = CuSuiteNew();
     SUITE_ADD_TEST(suite, TestRowNum);
@@ -147,6 +159,7 @@ CuSuite* testConfigGetSuite() {
     SUITE_ADD_TEST(suite, TestMedium);
     SUITE_ADD_TEST(suite, TestHard);
     SUITE_ADD_TEST(suite, TestScore);
+    SUITE_ADD_TEST(suite, TestUndoRedo);
 
 
     return suite;
