@@ -8,6 +8,10 @@ PATH_UNIT_TEST=Tests/UnitTests/
 PATH_COV_TEST=Tests/CoverageTests/
 PATH_EXEC=bin/
 
+export AFL=1
+CFLAGS += -DAFL=$(AFL)
+
+
 COMM=$(PATH_SRC)check.o $(PATH_SRC)config.o $(PATH_SRC)level.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
@@ -52,4 +56,4 @@ $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
 
 $(AFL) : $(OBJS)
-	$(CC_AFL) $(CFLAGS) $(OBJS) -o $(EXEC)
+	$(CC_AFL) $(CFLAGS) $(OBJS) -o $(AFL)

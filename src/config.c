@@ -1,5 +1,11 @@
 #include "config.h"
 
+
+
+#ifdef AFL
+	FILE * file;
+#endif
+
 void purge(void)
 {
 	int c;
@@ -13,16 +19,30 @@ void readInt(int *val, const char *name)
 #ifdef KLEE
 	klee_make_symbolic(val, sizeof(int), name);
 #else
-	if (scanf("%d", val) != 1)
-	{
-		*val = -10000000;
-		purge();
-	}
-	if (*val > 0)
-	{
-		*val = *val - 1;
-	}
+	#ifdef AFL
+		if (fscanf(file, "%d", val) != 1)
+		{
+			*val = -10000000;
+			purge();
+		}
+		if (*val > 0)
+		{
+			*val = *val - 1;
+		}
+	#else
+		if (scanf("%d", val) != 1)
+		{
+			*val = -10000000;
+			purge();
+		}
+		if (*val > 0)
+		{
+			*val = *val - 1;
+		}
+	#endif
 #endif
+
+
 }
 
 void initTableau(Board *board)
@@ -78,6 +98,9 @@ Board *initBoard(char *confFile)
 
 void libererBoard(Board *board)
 {
+	#ifdef AFL
+		fclose(file);
+	#endif
 	libererundoRedo(board);
 	for (int i = 0; i < board->height; i++)
 	{
@@ -102,7 +125,12 @@ void XMLformating(char *confFile, Board *board)
 	char c = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, widthTag = 0, heightTag = 0, highscoresTag = 0;
 	int start = 0, End = 0, flag1 = 0, flag2 = 0, widthflag = 0, heightflag = 0, highscoresflag = 0;
 
+	#ifdef AFL
+	file = fopen(confFile, "r");
+	#else
 	FILE *file = fopen(confFile, "r");
+	#endif
+
 	if (file == NULL)
 	{
 		printf("Erreur lors de l'ouverture du fichier\n");
@@ -186,8 +214,12 @@ void XMLformating(char *confFile, Board *board)
 		board->highscores = 5;
 		printf("Incorrect file format, default value of highscore list (5) is loaded\n");
 	}
-
+	#ifdef AFL
+	fseek(file, 104, SEEK_SET);
+	#else
 	fclose(file);
+	printf("ya\n");
+	#endif
 }
 
 void print(Board *board)
