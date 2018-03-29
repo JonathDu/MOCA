@@ -48,7 +48,7 @@ $(TESTS) : $(FIC_TESTS)
 	$(CC) $(CFLAGS) $(FIC_TESTS) -o $(TESTS)
 
 $(EXECPROFILE): $(OBJS)
-	$(CC) $(CFALGS) -pg $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
 
 $(AFL) : $(OBJS)
 	$(CC_AFL) $(CFLAGS) $(OBJS) -o $(EXEC)

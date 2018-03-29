@@ -180,6 +180,7 @@ void highscore(int high) //TODO : a optimiser !!
 		highs[i] = temp;
 		i--;
 	}
+	fclose(highsc);
 	highsc = fopen("highscores.text", "w");
 	printf("\n\t      High Scores\n\t\t*****");
 	for (i = 0; i < highscores; i++)
