@@ -8,8 +8,8 @@ PATH_UNIT_TEST=Tests/UnitTests/
 PATH_COV_TEST=Tests/CoverageTests/
 PATH_EXEC=bin/
 
-export AFL=1
-CFLAGS += -DAFL=$(AFL)
+#export AFL=1
+#CFLAGS += -DAFL=$(AFL)
 
 
 COMM=$(PATH_SRC)check.o $(PATH_SRC)config.o $(PATH_SRC)level.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o
@@ -44,7 +44,8 @@ klee :
 afl : $(AFL)
 
 clean :
-	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA)
+	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda
+
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC); mv $(PATH_SRC)*.o $(PATH_EXEC)
