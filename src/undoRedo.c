@@ -8,13 +8,11 @@ void undoRedo(char *x, Board *board, int num)
 	{
 		//Sauvegarde du numero de colonne du dernier jeton placer
 		board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = num;
-		board->undoRedo.k = rowNum(num, board);
-		board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = board->undoRedo.k;
+		board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);
 
 		//Sauvegarde du numero de ligne du dernier jeton placer
 		board->undoRedo.redoCol[board->undoRedo.nbCoupJouer] = num;
-		board->undoRedo.l = rowNum(num, board);
-		board->undoRedo.redoRow[board->undoRedo.nbCoupJouer] = board->undoRedo.l;
+		board->undoRedo.redoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);;
 	}
 	//Si on veux annuler le dernier coup, on place \0 au dernier endroit sauvegarder dans la structure
 	if (num == UNDO)

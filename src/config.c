@@ -56,13 +56,7 @@ void initTableau(Board *board)
 	board->undoRedo.redoCol = (int *)malloc(sizeOfBoard);
 	board->undoRedo.undoRow = (int *)malloc(sizeOfBoard);
 	board->undoRedo.redoRow = (int *)malloc(sizeOfBoard);
-	board->undoRedo.compUndoCol = (int *)malloc(sizeOfBoard);
-	board->undoRedo.compUndoRow = (int *)malloc(sizeOfBoard);
 	board->undoRedo.nbCoupJouer = 0;
-	board->undoRedo.c = 0;
-	board->undoRedo.d = 0;
-	board->undoRedo.k = 0;
-	board->undoRedo.l = 0;
 
 	for (i = 0; i < boardSize; i++)
 	{
@@ -70,8 +64,6 @@ void initTableau(Board *board)
 		board->undoRedo.redoCol[i] = 0;
 		board->undoRedo.undoRow[i] = 0;
 		board->undoRedo.redoRow[i] = 0;
-		board->undoRedo.compUndoCol[i] = 0;
-		board->undoRedo.compUndoRow[i] = 0;
 	}
 	board->board = (char **)malloc(board->height * sizeof(char *));
 	for (int i = 0; i < board->height; i++)

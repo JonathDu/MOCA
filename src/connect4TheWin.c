@@ -309,20 +309,12 @@ void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
 			break;
 		}
 
-		board->undoRedo.compUndoCol[board->undoRedo.d++] = num - 1;
-		board->undoRedo.compUndoRow[board->undoRedo.c++] = rowNum(num, board) + 1;
-		board->undoRedo.compUndoCounter = 0;
+
 	}
 
 	//Pas besoin de UNDO pour l'IA
 
-	/*if (num == UNDO)
-	{
-		board->undoRedo.compUndoCounter += 1;
-		board->undoRedo.c--;
-		board->undoRedo.d--;
-		board->board[board->undoRedo.compUndoRow[board->undoRedo.c]][board->undoRedo.compUndoCol[board->undoRedo.d]] = '\0';
-	}*/
+
 
 	print(board);
 	*score = totalScore(board, lettreIA);
