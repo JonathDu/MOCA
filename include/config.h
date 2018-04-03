@@ -2,7 +2,7 @@
  * @file config.h
  * @author Groupe 4
  * @date 2018
- * @brief Ce fichier contient les structures utilisées par ce programme, ainsi que toute les fonctions "outils" du programme. 
+ * @brief Ce fichier contient les structures utilisées par ce programme, ainsi que toute les fonctions "outils" du programme.
  */
 
 
@@ -16,7 +16,7 @@
 #endif
 
 /**
- * @defgroup GROUPE_UNDO_REDO Constantes de saisie de valeurs à saisir 
+ * @defgroup GROUPE_UNDO_REDO Constantes de saisie de valeurs à saisir
  *
  * @{
  */
@@ -36,7 +36,7 @@
 #define IA 1
 
 /**
- * @defgroup GROUPE_NIVEAUX Constantes de niveaux 
+ * @defgroup GROUPE_NIVEAUX Constantes de niveaux
  *
  * @{
  */
@@ -77,7 +77,7 @@ typedef struct {
 
 /**
  * \enum Board
- * @brief Structure qui contient toute les informations du tableau de jeu 
+ * @brief Structure qui contient toute les informations du tableau de jeu
  *
  * Il faut l'utilisé en passage par référence afin d'avoir qu'une seule instance de cette structure.
  */
@@ -88,6 +88,17 @@ typedef struct {
 	int highscores; /**< Meilleur score */
 	UndoRedo undoRedo; /**< Structure pour gérer les undo redo */
 } Board;
+
+int freadInt(FILE* f, char* c, int* value, const char *name);
+
+
+int freadChar(FILE* f, char* c, char* value, const char *name);
+
+int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name);
+
+
+
+int Kleerandom();
 
 /**
  * \fn void readInt(int* val, const char* name)
@@ -104,7 +115,7 @@ void readInt(int* val, const char* name);
  * \brief Fonction d'initialisation de la structure Board grace au fichier de config.
  *
  * \param Nom du fichier de configuration
- * \return le tableau initialisé 
+ * \return le tableau initialisé
  */
 Board* initBoard(char *confFile);
 

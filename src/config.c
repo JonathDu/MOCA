@@ -14,6 +14,50 @@ void purge(void)
 	}
 }
 
+
+int freadInt(FILE* f, char* c, int* value, const char *name)
+{
+	#ifdef KLEE
+		klee_make_symbolic(value, sizeof(int),name);
+		return 1;
+	#else
+		return fscanf(f,c,value);
+	#endif
+}
+
+
+int freadChar(FILE* f, char* c, char* value, const char *name)
+{
+	#ifdef KLEE
+		klee_make_symbolic(value, sizeof(char),name);
+		return 1;
+	#else
+		return fscanf(f,c,value);
+	#endif
+}
+
+int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name)
+{
+	#ifdef KLEE
+		klee_make_symbolic(value1, sizeof(char),name);
+		klee_make_symbolic(value2, sizeof(int),name);
+
+		return 1;
+	#else
+		return fscanf(f,c,value1, value2);
+	#endif
+}
+
+int Kleerandom(){
+	#ifdef KLEE
+		int *v = malloc(sizeof(int));
+		klee_make_symbolic(v, sizeof(int), "random");
+		return *v;
+	#else
+		return rand();
+	#endif
+}
+
 void readInt(int *val, const char *name)
 {
 #ifdef KLEE
