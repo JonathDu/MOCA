@@ -17,7 +17,7 @@ int numColonneVide(Board *board, int numero)
 
 void Easy(Board *board, int *num)
 {
-	
+
 	int numCol;
 	int nbColVide = getNbColonneVide(board);
 	numCol = rand() % nbColVide; //Choisi une colonne au hasard
@@ -55,6 +55,7 @@ int Medium(Board *board, char character, int *num)
 	}
 	return 0;
 }
+
 
 void Hard(Board *board, int *num)
 {
