@@ -1,5 +1,5 @@
+#CC=afl-gcc
 CC=gcc
-CC_AFL=afl-gcc
 CFLAGS= -Iinclude -Wall -g -fprofile-arcs -ftest-coverage
 LDFLAGS = -pg -lgcov --coverage
 
@@ -10,7 +10,6 @@ PATH_EXEC=bin/
 
 #export AFL=1
 #CFLAGS += -DAFL=$(AFL)
-
 
 COMM=$(PATH_SRC)check.o $(PATH_SRC)config.o $(PATH_SRC)level.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o
 
@@ -57,4 +56,4 @@ $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
 
 $(AFL) : $(OBJS)
-	$(CC_AFL) $(CFLAGS) $(OBJS) -o $(AFL)
+	$(CC_AFL) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL)

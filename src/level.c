@@ -20,6 +20,7 @@ void Easy(Board *board, int *num)
 
 	int numCol;
 	int nbColVide = getNbColonneVide(board);
+	//numCol = *Kleerandom() % nbColVide; //Choisi une colonne au hasard
 	numCol = rand() % nbColVide; //Choisi une colonne au hasard
 	numCol = numColonneVide(board, numCol);
 	int ligne = getLigneLibre(board, numCol);
