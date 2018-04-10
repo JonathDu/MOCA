@@ -41,7 +41,7 @@ int checkColPleine(int numCol, Board* board);
 
 /**
  * \fn int getLigneLibre( Board* board, int numCol)
- * \brief Fonction qui renvoi le numéro de ligne libre de la colonne numCol 
+ * \brief Fonction qui renvoi le numéro de ligne libre de la colonne numCol
  *
  * \param Pointeur sur le Board
  * \param Numero de la colonne
