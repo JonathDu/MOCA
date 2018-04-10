@@ -1,4 +1,3 @@
-#CC=afl-gcc
 CC=gcc
 CFLAGS= -Iinclude -Wall -g -fprofile-arcs -ftest-coverage
 LDFLAGS = -pg -lgcov --coverage
@@ -43,8 +42,10 @@ doxygen :
 klee :
 	./Tests/Klee/cl.sh $(args)
 
-
 afl : $(AFL)
+	./Tests/AFL/script_afl.sh
+
+
 
 clean :
 	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex
@@ -59,4 +60,4 @@ $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
 
 $(AFL) : $(OBJS)
-	$(CC_AFL) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL)
