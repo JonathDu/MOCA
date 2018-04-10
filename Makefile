@@ -37,13 +37,16 @@ tests : $(TESTS)
 
 profiling : $(EXECPROFILE)
 
+doxygen :
+	doxygen Doxygen/conf
+
 klee :
 	./Tests/Klee/cl.sh
 
 afl : $(AFL)
 
 clean :
-	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda
+	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex
 
 
 $(EXEC) : $(OBJS)

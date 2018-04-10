@@ -1,3 +1,10 @@
+/**
+ * @file deroulementJeu.h
+ * @author Groupe 4
+ * @date 2018
+ * @brief Ce fichier contient le mecanisme du jeu (enchainement de coups ...)
+ */
+
 #ifndef __DEROULEMENT_JEU__
 #define __DEROULEMENT_JEU__
 
@@ -12,8 +19,38 @@
 #include "IA.h"
 #include "affichage.h"
 
+/**
+ * \fn void jouer(Board *board)
+ * \brief Fonction principale du jeu, qui rejoue tant qu'on veut
+ *
+ * \param Pointeur sur le Board
+ * \return Retourne rien
+ */
 void jouer(Board *board);
+
+/**
+ * \fn int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
+ * \brief Fonction de jeu du joueur
+ *
+ * \param Pointeur sur le Board
+ * \param Numéro du joueur
+ * \param Lettre du joueur qui va être ecrit sur le board
+ * \param Score du joueur
+ * \return Retourne rien
+ */
 int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score);
+
+/**
+ * \fn void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
+ * \brief Fonction de jeu de l'IA
+ *
+ * \param Pointeur sur le Board
+ * \param Lettre de l'IA qui va être ecrit sur le board
+ * \param Score du joueur
+ * \param Niveau difficulté joueur
+ * \param Numéro de colonne
+ * \return Retourne rien
+ */
 void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num);
 
 #endif
