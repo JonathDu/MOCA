@@ -1,7 +1,5 @@
 #include "config.h"
 
-
-
 #ifdef AFL
 	FILE * file;
 #endif
@@ -60,9 +58,9 @@ int Kleerandom(){
 
 void readInt(int *val, const char *name)
 {
-#ifdef KLEE
-	klee_make_symbolic(val, sizeof(int), name);
-#else
+	#ifdef KLEE
+		klee_make_symbolic(val, sizeof(int), name);
+	#else
 	#ifdef AFL
 		if (fscanf(file, "%d", val) != 1)
 		{
@@ -84,7 +82,7 @@ void readInt(int *val, const char *name)
 			*val = *val - 1;
 		}
 	#endif
-#endif
+	#endif
 
 
 }
@@ -256,56 +254,6 @@ void XMLformating(char *confFile, Board *board)
 	fclose(file);
 	printf("ya\n");
 	#endif
-}
-
-void print(Board *board)
-{
-	int i, j;
-	for (i = 0; i < board->height; i++)
-	{
-		printf("\n+");
-		for (j = 0; j < board->width; j++)
-		{
-			printf("---+");
-		}
-		printf("\n|");
-		for (j = 0; j < board->width; j++)
-		{
-			if (board->board[i][j] == '\0')
-			{
-				printf("   |");
-			}
-			else
-			{
-				printf(" %c |", board->board[i][j]);
-			}
-		}
-	}
-	printf("\n+");
-	for (i = 0; i < board->width; i++)
-	{
-		printf("---+");
-	}
-	printf("\n");
-	for (i = 1; i <= board->width; i++)
-	{
-		printf("   %d", i);
-	}
-	printf("\n\n\n");
-}
-
-void player(Board *board, int numCol, char character)
-{
-	int i;
-	for (i = (board->height - 1); i >= 0; i--)
-	{
-		if (board->board[i][numCol] == '\0')
-		{
-			board->board[i][numCol] = character;
-			break;
-		}
-	}
-	print(board);
 }
 
 int rowNum(int num, Board *board)

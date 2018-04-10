@@ -1,5 +1,41 @@
 #include "affichage.h"
 
+void afficherBoard(Board *board)
+{
+	int i, j;
+	for (i = 0; i < board->height; i++)
+	{
+		printf("\n+");
+		for (j = 0; j < board->width; j++)
+		{
+			printf("---+");
+		}
+		printf("\n|");
+		for (j = 0; j < board->width; j++)
+		{
+			if (board->board[i][j] == '\0')
+			{
+				printf("   |");
+			}
+			else
+			{
+				printf(" %c |", board->board[i][j]);
+			}
+		}
+	}
+	printf("\n+");
+	for (i = 0; i < board->width; i++)
+	{
+		printf("---+");
+	}
+	printf("\n");
+	for (i = 1; i <= board->width; i++)
+	{
+		printf("   %d", i);
+	}
+	printf("\n\n\n");
+}
+
 void afficheEnteteBienvenue()
 {
     printf("\n\n                     **** WELCOME TO THE GAME ****\n\n");
