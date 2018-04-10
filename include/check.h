@@ -41,7 +41,7 @@ int checkEmpty(Board* board);
  * \param Numero de la ligne
  * \return Retourne 1 si la colonne numCol est vide, 0 sinon
  */
-//int checkColVide(Board* board,int numCol,int numOfrow);
+int checkColVide(Board* board,int numCol,int numOfrow);
 
 /**
  * \fn int checkColPleine(int numCol, Board* board)
@@ -65,7 +65,7 @@ int checkColPleine(int numCol, Board* board);
 
 /**
  * \fn int getLigneLibre( Board* board, int numCol)
- * \brief Fonction qui renvoi le numéro de ligne libre de la colonne numCol 
+ * \brief Fonction qui renvoi le numéro de ligne libre de la colonne numCol
  *
  * \param Pointeur sur le Board
  * \param Numero de la colonne
