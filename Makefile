@@ -38,7 +38,8 @@ tests : $(TESTS)
 profiling : $(EXECPROFILE)
 
 klee :
-	./Tests/Klee/cl.sh
+	./Tests/Klee/cl.sh $(args)
+
 
 afl : $(AFL)
 
