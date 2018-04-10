@@ -1,9 +1,14 @@
-`clang -I../../include -I${KLEE}/include  -Wall -Werror -DKLEE -emit-llvm -g -c ../../src/check.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/config.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/level.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/score.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/undoRedo.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/affichage.c`
-`clang -I../../include -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  ../../src/connect4TheWin.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/utils.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/IA.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/score.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/config.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/undoRedo.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/affichage.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/connect4TheWin.c`
+`clang -Iinclude -I${KLEE}/include -Wall -Werror -DKLEE -emit-llvm -g -c  src/deroulementJeu.c`
 
-`llvm-link check.bc affichage.bc config.bc level.bc score.bc undoRedo.bc connect4TheWin.bc -o appli.bc`
+`llvm-link utils.bc affichage.bc config.bc IA.bc score.bc undoRedo.bc deroulementJeu.bc connect4TheWin.bc -o appli.bc`
+
+`mv *.bc Tests/Klee`
+
+`cd Tests/Klee; chemin=../../; klee appli.bc $chemin$1 > /dev/null`
