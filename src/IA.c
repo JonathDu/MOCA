@@ -1,4 +1,4 @@
-#include "level.h"
+#include "IA.h"
 
 int numColonneVide(Board *board, int numero)
 {

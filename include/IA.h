@@ -1,17 +1,17 @@
 /**
- * @file level.h
+ * @file IA.h
  * @author Groupe 4
  * @date 2018
  * @brief Ce fichier contient les fonctions d'IA
  */
 
-#ifndef __LEVEL__
-#define __LEVEL__
+#ifndef __IA__
+#define __IA__
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "config.h"
-#include "check.h"
+#include "utils.h"
 #include "score.h"
 
 /**

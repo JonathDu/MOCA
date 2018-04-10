@@ -1,6 +1,5 @@
 #include "undoRedo.h"
 
-//?????????
 void undoRedo(char *x, Board *board, int num)
 {
 	static int ccounter = 0, dcounter = 0;
@@ -19,7 +18,7 @@ void undoRedo(char *x, Board *board, int num)
 	{
 		ccounter += 1;
 		board->board[board->undoRedo.undoRow[(board->undoRedo.nbCoupJouer - 1)]][board->undoRedo.undoCol[(board->undoRedo.nbCoupJouer - 1)]] = '\0';
-		print(board);
+		afficherBoard(board);
 		board->undoRedo.nbCoupJouer -= 1;
 		board->undoRedo.undoCounter += 1;
 
@@ -30,7 +29,7 @@ void undoRedo(char *x, Board *board, int num)
 		if ((dcounter <= ccounter))
 		{
 			board->board[board->undoRedo.redoRow[board->undoRedo.nbCoupJouer]][board->undoRedo.redoCol[board->undoRedo.nbCoupJouer]] = *x;
-			print(board);
+			afficherBoard(board);
 			board->undoRedo.nbCoupJouer += 1;
 			board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = board->undoRedo.redoCol[board->undoRedo.nbCoupJouer];
 			board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = board->undoRedo.redoRow[board->undoRedo.nbCoupJouer];
@@ -45,7 +44,7 @@ void undoRedo(char *x, Board *board, int num)
 	else if (num == SAVE)
 	{
 		printf("Game saved Successfully");
-		print(board);
+		afficherBoard(board);
 	}
 	//On ajoute le pions dans le board
 	else
@@ -57,19 +56,31 @@ void undoRedo(char *x, Board *board, int num)
 	}
 }
 
-/*void undoRedoLimit(int num, Board *board)
+void saveLoad(int *num, Board *board)
 {
-	if (num == UNDO)
+	FILE *pfile;
+	int r, t;
+	pfile = fopen("save.txt", "r");
+	if (pfile == NULL)
 	{
-		board->undoRedo.undoCounter += 1;
+		printf("Fichier de sauvegarde introuvable \n");
+		return;
 	}
-	else if (num == REDO)
+	for (r = board->height - 1; r >= 0; r--)
 	{
-		board->undoRedo.redoCounter += 1;
+		for (t = board->width - 1; t >= 0; t--)
+		{
+			switch (*num)
+			{
+			case LOAD:
+				//fscanf(pfile, "%c", &(board->board[r][t]));
+				break;
+			case SAVE:
+				fprintf(pfile, "%c", board->board[r][t]);
+				break;
+			}
+		}
 	}
-	else
-	{
-		board->undoRedo.undoCounter = 0;
-		board->undoRedo.redoCounter = 0;
-	}
-}*/
+	fclose(pfile);
+	afficherBoard(board);
+}

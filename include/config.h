@@ -89,15 +89,10 @@ typedef struct {
 	UndoRedo undoRedo; /**< Structure pour gérer les undo redo */
 } Board;
 
+
 int freadInt(FILE* f, char* c, int* value, const char *name);
-
-
 int freadChar(FILE* f, char* c, char* value, const char *name);
-
 int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name);
-
-
-
 int Kleerandom();
 
 /**
@@ -118,6 +113,14 @@ void readInt(int* val, const char* name);
  * \return le tableau initialisé
  */
 Board* initBoard(char *confFile);
+
+/**
+ * \fn void initTableau(Board *board)
+ * \brief Fonction d'initialisation des tableaux contenu dans Board
+ *
+ * \param Pointeur sur la structure Board
+ */
+void initTableau(Board *board);
 
 /**
  * \fn void libererBoard(Board* board)
@@ -148,15 +151,6 @@ void libererundoRedo(Board* board);
 void XMLformating(char *confFile, Board* board);
 
 /**
- * \fn void print(Board* board)
- * \brief Fonction affiche le Board sur la sortie standard
- *
- * \param Pointeur sur le Board à afficher
- * \return Rien
- */
-void print(Board* board);
-
-/**
  * \fn int rowNum(int num, Board* board)
  * \brief Fonction qui prend en entrée un numero de colonne, et renvoie le numéro de la 1ere ligne libre dans la colonne numéro num
  *
@@ -166,18 +160,9 @@ void print(Board* board);
  */
 int rowNum(int num, Board* board);
 
-/**
- * \fn void player(Board* board, int numCol, char character)
- * \brief Fonction qui ajoute le pion dans la grille, et affiche la grille
- *
- * \param Pointeur sur le Board
- * \param Numéro de colonne dans laquelle insérer
- * \param Character qui va être insérer dans le tableau (X ou O)
- * \return Rien
- */
-void player(Board* board, int numCol, char character);
 
 
-void initTableau(Board *board);
+
+
 
 #endif

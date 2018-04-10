@@ -11,7 +11,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "config.h"
-#include "check.h"
+#include "utils.h"
+#include "affichage.h"
+
 
 /**
  * \fn void undoRedo(char *x, Board *board, int num)
@@ -25,13 +27,13 @@
 void undoRedo(char *x, Board *board, int num);
 
 /**
- * \fn void undoRedoLimit(int num, Board *board)
- * \brief Fonction qui ????
+ * \fn void saveLoad(int *num, Board *board)
+ * \brief Fonction qui save ou qui load
  *
- * \param Character du joueur
+ * \param Numéro qui est soit LOAD soit SAVE
  * \param Pointeur sur le Board
- * \return Retourne le score
+ * \return Retourne rien
  */
-//void undoRedoLimit(int num, Board *board);
+void saveLoad(int *num, Board *board);
 
 #endif

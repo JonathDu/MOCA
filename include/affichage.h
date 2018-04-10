@@ -10,6 +10,16 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "config.h"
+
+/**
+ * \fn void afficherBoard(Board *board)
+ * \brief Fonction qui affiche le board
+ *
+ * \param Pointeur sur le Board
+ * \return Rien
+ */
+void afficherBoard(Board *board);
 
 /**
  * \fn void afficheEnteteBienvenu()
