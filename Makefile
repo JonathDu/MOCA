@@ -15,7 +15,7 @@ COMM=$(PATH_SRC)config.o $(PATH_SRC)IA.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
 
-MAINTESTS=$(PATH_UNIT_TEST)testConfig.o $(PATH_UNIT_TEST)CuTest.o $(PATH_UNIT_TEST)AllTests.o 
+MAINTESTS=$(PATH_UNIT_TEST)testConfig.o $(PATH_UNIT_TEST)CuTest.o $(PATH_UNIT_TEST)AllTests.o
 
 OBJS=$(COMM) $(MAINCTW)
 
@@ -45,7 +45,6 @@ afl : $(AFL)
 
 clean :
 	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda
-
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC); mv $(PATH_SRC)*.o $(PATH_EXEC)

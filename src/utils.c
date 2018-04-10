@@ -78,13 +78,13 @@ int getNbColonneVide(Board *board)
 
 void highscore(int high)
 {
-	int highscores = 0;
-	
+	//int highscores = 0;
+
 	#ifdef KLEE
 		printf("");
 	#else
 	int i = 0, n = 0, temp;
-	int highs[highscores];
+	int highs[0];
 	FILE *highsc = fopen("highscores.text", "r");
 	if (highsc == NULL)
 	{
@@ -101,9 +101,9 @@ void highscore(int high)
 		}
 		else
 			break;
-	} while (i < highscores);
+	} while (i < 0);
 
-	while (highscores > i)
+	while (0 > i)
 	{
 		highs[i] = 0;
 		i++;
@@ -126,7 +126,7 @@ void highscore(int high)
 	fclose(highsc);
 	highsc = fopen("highscores.text", "w");
 	printf("\n\t      High Scores\n\t\t*****");
-	for (i = 0; i < highscores; i++)
+	for (i = 0; i < 0; i++)
 	{
 		fprintf(highsc, "%d ", highs[i]);
 		printf("\n\t\t* %d *", highs[i]);
@@ -149,7 +149,3 @@ void player(Board *board, int numCol, char character)
 	}
 	afficherBoard(board);
 }
-
-
-
-
