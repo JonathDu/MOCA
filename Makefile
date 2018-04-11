@@ -10,7 +10,7 @@ PATH_EXEC=bin/
 #export AFL=1
 #CFLAGS += -DAFL=$(AFL)
 
-COMM=$(PATH_SRC)config.o $(PATH_SRC)IA.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o $(PATH_SRC)deroulementJeu.o $(PATH_SRC)utils.o
+COMM=$(PATH_SRC)config.o $(PATH_SRC)IA.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o $(PATH_SRC)deroulementJeu.o $(PATH_SRC)utils.o
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
 

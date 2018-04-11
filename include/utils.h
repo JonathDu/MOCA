@@ -79,4 +79,15 @@ void highscore(int high);
 void player(Board* board, int numCol, char character);
 
 
+/**
+ * \fn int totalScore(Board *board, char character)
+ * \brief Fonction qui calcul le score total d'un joueur passé en parametre
+ *
+ * \param Pointeur sur le Board
+ * \param Character qui indique quel joueur c'est (O ou X)
+ * \return Retourne le score
+ */
+int totalScore(Board *board, char character);
+
+
 #endif
