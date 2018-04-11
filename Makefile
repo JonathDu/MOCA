@@ -7,10 +7,14 @@ PATH_UNIT_TEST=Tests/UnitTests/
 PATH_COV_TEST=Tests/CoverageTests/
 PATH_EXEC=bin/
 
-#export AFL=1
-#CFLAGS += -DAFL=$(AFL)
 
-COMM=$(PATH_SRC)config.o $(PATH_SRC)IA.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o $(PATH_SRC)deroulementJeu.o $(PATH_SRC)utils.o
+#Decommenter pour utiliser AFL
+export AFLAGS=1
+CFLAGS += -DAFL=$(AFLAGS)
+export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+export AFL_SKIP_CPUFREQ=1
+
+COMM=$(PATH_SRC)IA.o $(PATH_SRC)config.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o $(PATH_SRC)deroulementJeu.o $(PATH_SRC)utils.o
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
 
@@ -52,8 +56,12 @@ afl : $(AFL)
 valgrind : $(EXEC)
 	./Tests/Valgrind/script_valgrind.sh $(args)
 
+
+
+
+
 clean :
-	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex
+	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex; rm Tests/Klee/*.bc
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC); mv $(PATH_SRC)*.o $(PATH_EXEC)
@@ -62,10 +70,10 @@ $(TESTS) : $(FIC_TESTS)
 	$(CC) $(CFLAGS) $(FIC_TESTS) -o $(TESTS)
 
 $(EXECPROFILE): $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE); mv $(PATH_SRC)*.o $(PATH_EXEC)
 	./bin/profile $(CONF) < $(args)
 	gprof bin/profile > Tests/ProfilingTests/resGprof
 
 $(AFL) : $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL); mv $(PATH_SRC)*.o $(PATH_EXEC)
 	./Tests/AFL/script_afl.sh
