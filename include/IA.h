@@ -12,7 +12,6 @@
 #include <stdlib.h>
 #include "config.h"
 #include "utils.h"
-#include "score.h"
 
 /**
  * \fn int numColonneVide(Board *board, int numero)

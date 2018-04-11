@@ -6,7 +6,8 @@
 #include <stdlib.h>
 #include "config.h"
 #include "CuTest.h"
-#include "level.h"
+#include "IA.h"
+#include "undoRedo.h"
 
 Board* init();
 Board* init2();

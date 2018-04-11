@@ -1,2 +1,2 @@
 #!/bin/sh
-`afl-fuzz -n -i Tests/AFL/afl_in/ -o Tests/AFL/afl_out/ bin/afl @@`
+afl-fuzz -i Tests/AFL/afl_in/ -o Tests/AFL/afl_out/ bin/afl @@  

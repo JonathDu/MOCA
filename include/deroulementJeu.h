@@ -14,7 +14,6 @@
 #include <ctype.h>
 #include "config.h"
 #include "utils.h"
-#include "score.h"
 #include "undoRedo.h"
 #include "IA.h"
 #include "affichage.h"
