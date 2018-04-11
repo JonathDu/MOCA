@@ -23,10 +23,10 @@
  * \fn void jouer(Board *board)
  * \brief Fonction principale du jeu, qui rejoue tant qu'on veut
  *
- * \param Pointeur sur le Board
+ * \param Premier argument du programme
  * \return Retourne rien
  */
-void jouer(Board *board);
+void jouer(char* argv1);
 
 /**
  * \fn int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)

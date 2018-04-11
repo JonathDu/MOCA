@@ -2,7 +2,7 @@
  * @file config.h
  * @author Groupe 4
  * @date 2018
- * @brief Ce fichier contient les structures utilisées par ce programme, ainsi que toute les fonctions "outils" du programme.
+ * @brief Ce fichier contient les structures utilisées par ce programme.
  */
 
 

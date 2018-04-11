@@ -1,6 +1,6 @@
 #include "deroulementJeu.h"
 
-void jouer(Board *board)
+void jouer(char* argv1)
 {
 	char playAgain;
 	do
@@ -11,7 +11,8 @@ void jouer(Board *board)
 
 		char x = 'X';
 		char o = 'O';
-
+		Board* board = initBoard(argv1);
+		
 
 		afficheEnteteBienvenue();
 		int choixMode;
