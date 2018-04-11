@@ -1,7 +1,8 @@
 #include "CuTest.h"
-#include "level.h"
+#include "IA.h"
 #include "utilTest.h"
-#include "undoRedo.h"
+
+
 
 
 void TestRowNum(CuTest *tc){
@@ -73,7 +74,7 @@ void TestMedium(CuTest *tc){
 
     int num = 0;
     Medium(board,'O', &num);
-    print(board);
+    afficherBoard(board);
     CuAssertIntEquals(tc, num, 1);
     CuAssertIntEquals(tc, board->board[board->height-4][1] != '\0', 1);
 
@@ -88,7 +89,7 @@ void TestHard(CuTest *tc){
     }
     int num = 0;
     Hard(board, &num);
-    print(board);
+    afficherBoard(board);
     CuAssertIntEquals(tc, num, 2);
     CuAssertIntEquals(tc, board->board[board->height-3][2] != '\0', 1);
 
@@ -98,7 +99,7 @@ void TestHard(CuTest *tc){
     Hard(board, &num);
     CuAssertIntEquals(tc, num, 3);
     CuAssertIntEquals(tc, board->board[board->height-4][3] == 'O', 1);
-    print(board);
+    afficherBoard(board);
 
     Board* board2 = init2();
     board2->board[board2->height-1][4] = 'O';
@@ -107,12 +108,12 @@ void TestHard(CuTest *tc){
     Hard(board2, &num);
     CuAssertIntEquals(tc, num, 4);
     CuAssertIntEquals(tc, board2->board[board2->height-4][4] == 'O', 1);
-    print(board2);
+    afficherBoard(board2);
 
     Board* board3 = init2();
     Hard(board3, &num);
     CuAssertIntEquals(tc, checkEmpty(board), 0);
-    print(board3);
+    afficherBoard(board3);
 
 }
 
@@ -144,8 +145,8 @@ void TestUndoRedo(CuTest *tc){
   CuAssertIntEquals(tc, getLigneLibre(board, 2), 4);
   undoRedo(&x,board, -1);
   CuAssertIntEquals(tc, getLigneLibre(board, 2), 5);
-undoRedo(&x,board, -2);
-undoRedo(&x,board, -3);
+  undoRedo(&x,board, -2);
+  undoRedo(&x,board, -3);
 
 }
 

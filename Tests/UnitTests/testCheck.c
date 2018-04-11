@@ -1,7 +1,7 @@
 #include "CuTest.h"
-#include "check.h"
+#include "utils.h"
 #include "config.h"
-#include "level.h"
+#include "IA.h"
 #include "utilTest.h"
 
 

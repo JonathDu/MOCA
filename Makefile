@@ -14,7 +14,7 @@ COMM=$(PATH_SRC)config.o $(PATH_SRC)IA.o $(PATH_SRC)score.o $(PATH_SRC)undoRedo.
 
 MAINCTW=$(PATH_SRC)connect4TheWin.o
 
-MAINTESTS=$(PATH_UNIT_TEST)testConfig.o $(PATH_UNIT_TEST)CuTest.o $(PATH_UNIT_TEST)AllTests.o
+MAINTESTS=$(PATH_UNIT_TEST)testConfig.o $(PATH_UNIT_TEST)testCheck.o $(PATH_UNIT_TEST)CuTest.o $(PATH_UNIT_TEST)AllTests.o
 
 OBJS=$(COMM) $(MAINCTW)
 
@@ -30,9 +30,14 @@ TESTS=$(PATH_EXEC)test
 EXECPROFILE=$(PATH_EXEC)profile
 AFL=$(PATH_EXEC)afl
 
+
+
 all: $(EXEC)
 
-tests : $(TESTS)
+tests :
+	./Tests/UnitTests/executeTest.sh
+
+testsCompil : $(TESTS)
 
 profiling : $(EXECPROFILE)
 
@@ -43,9 +48,9 @@ klee :
 	./Tests/Klee/cl.sh $(args)
 
 afl : $(AFL)
-	./Tests/AFL/script_afl.sh
 
-
+valgrind : $(EXEC)
+	./Tests/Valgrind/script_valgrind.sh $(args)
 
 clean :
 	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex
@@ -58,6 +63,9 @@ $(TESTS) : $(FIC_TESTS)
 
 $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE)
+	./bin/profile $(CONF) < $(args)
+	gprof bin/profile > Tests/ProfilingTests/resGprof
 
 $(AFL) : $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL)
+	./Tests/AFL/script_afl.sh
