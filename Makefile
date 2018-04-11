@@ -9,10 +9,10 @@ PATH_EXEC=bin/
 
 
 #Decommenter pour utiliser AFL
-export AFLAGS=1
-CFLAGS += -DAFL=$(AFLAGS)
-export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
-export AFL_SKIP_CPUFREQ=1
+#export AFLAGS=1
+#CFLAGS += -DAFL=$(AFLAGS)
+#export AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
+#export AFL_SKIP_CPUFREQ=1
 
 COMM=$(PATH_SRC)IA.o $(PATH_SRC)config.o $(PATH_SRC)undoRedo.o $(PATH_SRC)affichage.o $(PATH_SRC)deroulementJeu.o $(PATH_SRC)utils.o
 
@@ -34,9 +34,26 @@ TESTS=$(PATH_EXEC)test
 EXECPROFILE=$(PATH_EXEC)profile
 AFL=$(PATH_EXEC)afl
 
+exec=exec pour compiler le programme
+
+all: info
+
+info:
+	@echo "Cible disponible:"
+	@echo "  exec				: Creer les binaires dans le dossier bin/"
+	@echo "  tests				: Creer les binaires des fichiers de tests et les éxécute"
+	@echo "  profiling CONF= args=		: Creer les binaires et execute le fichier args passer en paramètres"
+	@echo "  afl CC=afl-gcc		: Compile avec afl et lance le fuzzing sur le fichier dans Tests/AFL/afl_in (make infoAfl pour plus d'info)"
+	@echo "  valgrind CONF= args=		: Lance Valgrind avec le fichier args en entrée, et ecrit dans le fichier Tests/Valgrind/log.txt"
+	@echo "  cache_miss CONF= args=	: Lance perf avec le fichier CONF comme fichier de configuration, et args en entrée"
 
 
-all: $(EXEC)
+
+infoAfl:
+	@echo "Pour lancer AFL, il faut decommenter les lignes 12 à 15 sur un ordinateur sans accèes root, et 12 à 13 avec accès root, du Makefile"
+
+
+exec: $(EXEC)
 
 tests :
 	./Tests/UnitTests/executeTest.sh
@@ -54,10 +71,10 @@ klee :
 afl : $(AFL)
 
 valgrind : $(EXEC)
-	./Tests/Valgrind/script_valgrind.sh $(args)
+	./Tests/Valgrind/script_valgrind.sh $(CONF) $(args)
 
-
-
+cache_miss: $(EXEC)
+	sudo perf stat -e cache-misses,cache-references ./bin/connect4TheWin $(CONF) < $(args) > /dev/null
 
 
 clean :
