@@ -50,6 +50,7 @@ int Kleerandom(){
 	#ifdef KLEE
 		int *v = malloc(sizeof(int));
 		klee_make_symbolic(v, sizeof(int), "random");
+		klee_assume(v >= 0);
 		return *v;
 	#else
 		return rand();
@@ -92,27 +93,27 @@ void initTableau(Board *board)
 	int i = 0;
 	int j = 0;
 	int boardSize = board->height * board->width;
-	int sizeOfBoard = boardSize * sizeof(UndoTab);
+	int sizeOfBoard = boardSize * sizeof(int);
 
-	board->undoRedo.undoTab = (UndoTab *)malloc(sizeOfBoard);
+	//board->undoRedo.undoTab = (UndoTab *)malloc(sizeOfBoard);
 
-/*	board->undoRedo.undoCol = (int *)malloc(sizeOfBoard);
+	board->undoRedo.undoCol = (int *)malloc(sizeOfBoard);
 	board->undoRedo.redoCol = (int *)malloc(sizeOfBoard);
 	board->undoRedo.undoRow = (int *)malloc(sizeOfBoard);
-	board->undoRedo.redoRow = (int *)malloc(sizeOfBoard);*/
+	board->undoRedo.redoRow = (int *)malloc(sizeOfBoard);
 	board->undoRedo.nbCoupJouer = 0;
 
 	for (i = 0; i < boardSize; i++)
 	{
-		board->undoRedo.undoTab[i].undoCol = 0;
+		/*board->undoRedo.undoTab[i].undoCol = 0;
 		board->undoRedo.undoTab[i].redoCol = 0;
 		board->undoRedo.undoTab[i].undoRow = 0;
-		board->undoRedo.undoTab[i].redoRow = 0;
+		board->undoRedo.undoTab[i].redoRow = 0;*/
 
-		/*board->undoRedo.undoCol[i] = 0;
+		board->undoRedo.undoCol[i] = 0;
 		board->undoRedo.redoCol[i] = 0;
 		board->undoRedo.undoRow[i] = 0;
-		board->undoRedo.redoRow[i] = 0;*/
+		board->undoRedo.redoRow[i] = 0;
 	}
 
 
@@ -149,17 +150,20 @@ void libererBoard(Board *board)
 	{
 		free(board->board[i]);
 	}
+	board->height=0;
+	board->width=0;
 	free(board->board);
 	free(board);
 }
 
 void libererundoRedo(Board *board)
 {
-	free(board->undoRedo.undoTab);
-	/*free(board->undoRedo.undoCol);
+	//free(board->undoRedo.undoTab);
+	//A commenter
+	free(board->undoRedo.undoCol);
 	free(board->undoRedo.redoCol);
 	free(board->undoRedo.undoRow);
-	free(board->undoRedo.redoRow);*/
+	free(board->undoRedo.redoRow);
 }
 
 void XMLformating(char *confFile, Board *board)

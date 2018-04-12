@@ -48,28 +48,28 @@
 #define HARD 2
 /** @} */
 
-typedef struct {
+/*typedef struct {
 	int redoCol;
 	int undoCol;
 	int redoRow;
 	int undoRow;
-} UndoTab;
+} UndoTab;*/
 
 /**
  * \enum UndoRedo
  * @brief Structure utilisée dans la structure Board. Elle concerne uniquement les mécanisme pour undo/redo
  */
 typedef struct {
-	UndoTab* undoTab;
-	//int *redoCol; /**< c'est quoi ???  1. */
-	//int *undoCol; /**< c'est quoi ???  2. */
+	//UndoTab* undoTab;
+	int *redoCol; /**< c'est quoi ???  1. */
+	int *undoCol; /**< c'est quoi ???  2. */
 
 	int redoCounter; /**< c'est quoi ???  4. */
 	int undoCounter; /**< c'est quoi ???  5. */
 	int compUndoCounter; /**< c'est quoi ???  6. */
 
-	//int *redoRow; /**< c'est quoi ???  7. */
-	//int *undoRow; /**< c'est quoi ???  8. */
+	int *redoRow; /**< c'est quoi ???  7. */
+	int *undoRow; /**< c'est quoi ???  8. */
 
 	int nbCoupJouer;
 
