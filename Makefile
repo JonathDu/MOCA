@@ -93,4 +93,4 @@ $(EXECPROFILE): $(OBJS)
 
 $(AFL) : $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL); mv $(PATH_SRC)*.o $(PATH_EXEC)
-	./Tests/AFL/script_afl.sh
+	#./Tests/AFL/script_afl.sh

@@ -45,6 +45,7 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score);
  *
  * \param Pointeur sur le Board
  * \param Lettre de l'IA qui va être ecrit sur le board
+ * \param Lettre du joueur qui va être ecrit sur le board
  * \param Score du joueur
  * \param Niveau difficulté joueur
  * \param Numéro de colonne

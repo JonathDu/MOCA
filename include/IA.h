@@ -39,6 +39,7 @@ void Easy(Board *board, char character, int *num);
  *
  * \param Pointeur sur le Board
  * \param Character à insérer sur le Board (X ou O)
+ * \param Character à insérer sur le Board (X ou O)
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Retourne 1 si un coup est possible, 0 sinon
  */
@@ -49,6 +50,8 @@ int Medium(Board *board, char characterIA, char characterJoueur, int *num);
  * \brief Fonction IA en niveau HARD
  *
  * \param Pointeur sur le Board
+ * \param Character à insérer sur le Board (X ou O)
+ * \param Character à insérer sur le Board (X ou O)
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Rien
  */
