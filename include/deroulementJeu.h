@@ -50,6 +50,6 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score);
  * \param Numéro de colonne
  * \return Retourne rien
  */
-void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num);
+void tourIA(Board *board, char lettreIA, char lettreJoueur, int *score, int choixNiveau, int num);
 
 #endif

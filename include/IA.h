@@ -42,7 +42,7 @@ void Easy(Board *board, char character, int *num);
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Retourne 1 si un coup est possible, 0 sinon
  */
-int Medium(Board *board, char character, int *num);
+int Medium(Board *board, char characterIA, char characterJoueur, int *num);
 
 /**
  * \fn void Hard(Board *board, int *num)
@@ -52,6 +52,6 @@ int Medium(Board *board, char character, int *num);
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Rien
  */
-void Hard(Board *board, char character, int *num);
+void Hard(Board *board, char characterIA, char characterJoueur, int *num);
 
 #endif

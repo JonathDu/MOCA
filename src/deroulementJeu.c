@@ -1,6 +1,6 @@
 #include "deroulementJeu.h"
 
-void jouer(char* argv1)
+void jouer(char *argv1)
 {
 	char playAgain;
 	do
@@ -11,8 +11,7 @@ void jouer(char* argv1)
 
 		char x = 'X';
 		char o = 'O';
-		Board* board = initBoard(argv1);
-		
+		Board *board = initBoard(argv1);
 
 		afficheEnteteBienvenue();
 		int choixMode;
@@ -34,7 +33,7 @@ void jouer(char* argv1)
 				j1 = !j1;
 				affichageOptionRedo();
 
-				if (j1) //si c'est au joueur 1 de jouer TODO : pas opti, a chaque fois il reparcours tout le tableau
+				if (j1)
 				{
 					tourJoueur(board, 1, o, &score1);
 				}
@@ -78,16 +77,16 @@ void jouer(char* argv1)
 			{
 				affichageOptionRedo();
 				//int numSaisie = tourJoueur(board, 1, x, &score1);
-
-				//Pour test temps IA
 				int numSaisie = 0;
-				tourIA(board, x, &score1, choixNiveau, numSaisie);
-
+				tourIA(board, x, o, &score1, choixNiveau, numSaisie);
 
 				afficheScoreIA(score1, score2);
 
-				tourIA(board, o, &score2, choixNiveau, numSaisie);
-				afficheScoreIA(score1, score2);
+				if (!checkfull(board))
+				{
+					tourIA(board, o, x, &score2, choixNiveau, numSaisie);
+					afficheScoreIA(score1, score2);
+				}
 
 			} while (!checkfull(board));
 
@@ -114,7 +113,6 @@ void jouer(char* argv1)
 		libererBoard(board);
 
 	} while (playAgain == 'y');
-
 }
 
 int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
@@ -128,7 +126,8 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 		printf("\nPlayer %i : Enter number of the column : ", numJoueur);
 		readInt(&num, "num");
 		saveLoad(&num, board);
-		if(num > -20){
+		if (num > -20)
+		{
 			if (num < 0)
 			{
 				//////////////////////////////
@@ -182,7 +181,7 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 	return num;
 }
 
-void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
+void tourIA(Board *board, char lettreIA, char lettreJoueur, int *score, int choixNiveau, int num)
 {
 	if (num >= 0) //si le numero saisie est une colonnes
 	{
@@ -192,22 +191,18 @@ void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
 			Easy(board, lettreIA, &num);
 			break;
 		case MEDIUM:
-			if (Medium(board, lettreIA, &num) == 0)
+			if (Medium(board, lettreIA, lettreJoueur, &num) == 0)
 			{
 				Easy(board, lettreIA, &num);
 			}
 			break;
 		case HARD:
-			Hard(board, lettreIA, &num);
+			Hard(board, lettreIA, lettreJoueur, &num);
 			break;
 		}
-
-
 	}
 
 	//Pas besoin de UNDO pour l'IA
-
-
 
 	afficherBoard(board);
 	*score = totalScore(board, lettreIA);
