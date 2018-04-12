@@ -15,7 +15,7 @@ int numColonneVide(Board *board, int numero)
 	return indiceColonne - 1;
 }
 
-void Easy(Board *board, int *num)
+void Easy(Board *board, char character, int *num)
 {
 
 	int numCol;
@@ -24,7 +24,7 @@ void Easy(Board *board, int *num)
 	//numCol = rand() % nbColVide; //Choisi une colonne au hasard
 	numCol = numColonneVide(board, numCol);
 	int ligne = getLigneLibre(board, numCol);
-	board->board[ligne][numCol] = 'O';
+	board->board[ligne][numCol] = character;
 	*num = numCol;
 }
 
@@ -45,7 +45,7 @@ int Medium(Board *board, char character, int *num)
 		scoreNouveau = totalScore(board, character);
 		if (scoreAncien < scoreNouveau)
 		{
-			board->board[ligne][i] = 'O';
+			board->board[ligne][i] = character;
 			*num = i;
 			return 1;
 		}
@@ -58,7 +58,7 @@ int Medium(Board *board, char character, int *num)
 }
 
 
-void Hard(Board *board, int *num)
+void Hard(Board *board, char character, int *num)
 {
 	char x = 'X', o = 'O';
 	if (Medium(board, x, num) == 1)
@@ -72,8 +72,8 @@ void Hard(Board *board, int *num)
 		{
 			continue;
 		}
-		board->board[ligne][i] = o;
-		if (Medium(board, o, num) == 1)
+		board->board[ligne][i] = character;
+		if (Medium(board, character, num) == 1)
 		{
 			board->board[getLigneLibre(board, *num) + 1][*num] = '\0';
 			*num = i;
@@ -84,5 +84,5 @@ void Hard(Board *board, int *num)
 			board->board[ligne][i] = '\0';
 		}
 	}
-	Easy(board, num);
+	Easy(board, character, num);
 }

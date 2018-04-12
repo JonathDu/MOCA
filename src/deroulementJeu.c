@@ -189,16 +189,16 @@ void tourIA(Board *board, char lettreIA, int *score, int choixNiveau, int num)
 		switch (choixNiveau)
 		{
 		case EASY:
-			Easy(board, &num);
+			Easy(board, lettreIA, &num);
 			break;
 		case MEDIUM:
 			if (Medium(board, lettreIA, &num) == 0)
 			{
-				Easy(board, &num);
+				Easy(board, lettreIA, &num);
 			}
 			break;
 		case HARD:
-			Hard(board, &num);
+			Hard(board, lettreIA, &num);
 			break;
 		}
 
