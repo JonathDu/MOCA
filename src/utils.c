@@ -55,7 +55,7 @@ int getLigneLibre(Board *board, int numCol)
 	}*/
 	for (int i = board->height - 1; i >= 0; i--)
 	{
-		if (board->board[i][numCol] == '\0')
+		if (numCol < board->width && board->board[i][numCol] == '\0')
 		{
 			return i;
 		}

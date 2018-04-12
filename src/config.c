@@ -46,10 +46,10 @@ int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name)
 	#endif
 }
 
-int Kleerandom(){
+uint32_t Kleerandom(){
 	#ifdef KLEE
-		int *v = malloc(sizeof(int));
-		klee_make_symbolic(v, sizeof(int), "random");
+		uint32_t *v = malloc(sizeof(uint32_t));
+		klee_make_symbolic(v, sizeof(uint32_t), "random");
 		return *v;
 	#else
 		return rand();
@@ -149,6 +149,8 @@ void libererBoard(Board *board)
 	{
 		free(board->board[i]);
 	}
+	board->width=0;
+	board->height=0;
 	free(board->board);
 	free(board);
 }
