@@ -31,7 +31,7 @@ int numColonneVide(Board *board, int numero);
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Rien
  */
-void Easy(Board *board, int *num);
+void Easy(Board *board, char character, int *num);
 
 /**
  * \fn int Medium(Board *board, char character, int *num)
@@ -52,6 +52,6 @@ int Medium(Board *board, char character, int *num);
  * \param Numero entre entrée/sortie de la fonction qui est la colonne choisit par l'IA
  * \return Rien
  */
-void Hard(Board *board, int *num);
+void Hard(Board *board, char character, int *num);
 
 #endif
