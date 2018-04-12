@@ -6,18 +6,23 @@ void undoRedo(char *x, Board *board, int num)
 	if (num != UNDO && !checkColPleine(num, board) && num != REDO && !(num < REDO) && !(num > board->width) && !(num == SAVE))
 	{
 		//Sauvegarde du numero de colonne du dernier jeton placer
-		board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = num;
-		board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoCol = num;
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoRow = num;
+		/*board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = num;
+		board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);*/
 
 		//Sauvegarde du numero de ligne du dernier jeton placer
-		board->undoRedo.redoCol[board->undoRedo.nbCoupJouer] = num;
-		board->undoRedo.redoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);;
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoCol = num;
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoRow = num;
+		/*board->undoRedo.redoCol[board->undoRedo.nbCoupJouer] = num;
+		board->undoRedo.redoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);*/
 	}
 	//Si on veux annuler le dernier coup, on place \0 au dernier endroit sauvegarder dans la structure
 	if (num == UNDO)
 	{
 		ccounter += 1;
-		board->board[board->undoRedo.undoRow[(board->undoRedo.nbCoupJouer - 1)]][board->undoRedo.undoCol[(board->undoRedo.nbCoupJouer - 1)]] = '\0';
+
+		board->board[board->undoRedo.undoTab[(board->undoRedo.nbCoupJouer - 1)].undoRow][board->undoRedo.undoTab[(board->undoRedo.nbCoupJouer - 1)].undoCol] = '\0';
 		afficherBoard(board);
 		board->undoRedo.nbCoupJouer -= 1;
 		board->undoRedo.undoCounter += 1;
@@ -28,11 +33,14 @@ void undoRedo(char *x, Board *board, int num)
 		dcounter += 1;
 		if ((dcounter <= ccounter))
 		{
-			board->board[board->undoRedo.redoRow[board->undoRedo.nbCoupJouer]][board->undoRedo.redoCol[board->undoRedo.nbCoupJouer]] = *x;
+			board->board[board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoRow][board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoCol] = *x;
 			afficherBoard(board);
 			board->undoRedo.nbCoupJouer += 1;
-			board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = board->undoRedo.redoCol[board->undoRedo.nbCoupJouer];
-			board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = board->undoRedo.redoRow[board->undoRedo.nbCoupJouer];
+
+
+
+			board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoCol = 	board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoCol;
+			board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoRow = board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoRow;
 			board->undoRedo.redoCounter += 1;
 
 		}
