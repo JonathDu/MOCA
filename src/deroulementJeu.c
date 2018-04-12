@@ -126,7 +126,7 @@ int tourJoueur(Board *board, int numJoueur, char lettreJoueur, int *score)
 		printf("\nPlayer %i : Enter number of the column : ", numJoueur);
 		readInt(&num, "num");
 		saveLoad(&num, board);
-		if (num > -20)
+		if (num >= REDO)
 		{
 			if (num < 0)
 			{
