@@ -1,4 +1,5 @@
 <Configurations>
   <Height>400</Height>
-  <Highscores>500</Highscores>
+  <Width>500</Width>
+  <Highscores>5</Highscores>
 </Configurations>
