@@ -46,10 +46,22 @@ int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name)
 	#endif
 }
 
-uint32_t Kleerandom(){
+int freadIntChar(FILE* f, char* c, int* value1, char* value2, const char *name)
+{
 	#ifdef KLEE
-		uint32_t *v = malloc(sizeof(uint32_t));
-		klee_make_symbolic(v, sizeof(uint32_t), "random");
+		klee_make_symbolic(value1, sizeof(int),name);
+		klee_make_symbolic(value2, sizeof(char),name);
+
+		return 1;
+	#else
+		return fscanf(f,c,value1, value2);
+	#endif
+}
+
+uint Kleerandom(){
+	#ifdef KLEE
+		uint *v = malloc(sizeof(uint));
+		klee_make_symbolic(v, sizeof(uint), "random");
 		return *v;
 	#else
 		return rand();
@@ -182,8 +194,8 @@ void XMLformating(char *confFile, Board *board)
 		printf("Erreur lors de l'ouverture du fichier\n");
 		exit(1);
 	}
-
-	fscanf(file, "< Configurations %c", &c);
+	freadChar(file, "< Configurations %c", &c, "config");
+	//fscanf(file, "< Configurations %c", &c);
 	if (c == '>')
 	{
 		flag1 = 1;
@@ -191,9 +203,16 @@ void XMLformating(char *confFile, Board *board)
 	}
 	else
 	{
-		while (fscanf(file, "%c", &c1) != EOF)
+
+
+
+	//	while (fscanf(file, "%c", &c1) != EOF)
+		while (freadChar(file, "%c", &c, "config") != EOF)
+
 		{
-			fscanf(file, "< Configurations %c", &c2);
+			freadChar(file, "< Configurations %c", &c, "config");
+
+			//fscanf(file, "< Configurations %c", &c2);
 			if (c2 == '>')
 			{
 				flag1 = 1;
@@ -202,9 +221,11 @@ void XMLformating(char *confFile, Board *board)
 			}
 		}
 	}
-	while (fscanf(file, "%c", &c3) != EOF)
+	while (freadChar(file, "%c", &c, "config") != EOF)
+
+	//while (fscanf(file, "%c", &c3) != EOF)
 	{
-		fscanf(file, "< / Configurations %c", &c4);
+		freadChar(file, "< / Configurations %c", &c4, "config");
 		if (c4 == '>')
 		{
 			flag2 = 1;
@@ -215,9 +236,9 @@ void XMLformating(char *confFile, Board *board)
 	if (flag1 == 1 && flag2 == 1)
 	{
 		fseek(file, start, SEEK_SET);
-		while (fscanf(file, "%c", &c5) != EOF)
+		while (freadChar(file, "%c", &c5, "config") != EOF)
 		{
-			fscanf(file, "< Width >%d < / Width %c", &(board->width), &widthTag);
+			freadIntChar(file, "< Width >%d < / Width %c", &(board->width), &widthTag, "Config");
 			if ((widthTag == '>') && (board->width >= 4) && ftell(file) < End)
 			{
 				widthflag = 1;
@@ -225,9 +246,9 @@ void XMLformating(char *confFile, Board *board)
 			}
 		}
 		fseek(file, start, SEEK_SET);
-		while (fscanf(file, "%c", &c6) != EOF)
+		while (freadChar(file, "%c", &c6, "config") != EOF)
 		{
-			fscanf(file, "< Height >%d < / Height %c", &(board->height), &heightTag);
+			freadIntChar(file, "< Height >%d < / Height %c", &(board->height), &heightTag, "config");
 			if ((heightTag == '>') && (board->height >= 4) && ftell(file) < End)
 			{
 				heightflag = 1;
@@ -235,9 +256,9 @@ void XMLformating(char *confFile, Board *board)
 			}
 		}
 		fseek(file, start, SEEK_SET);
-		while (fscanf(file, "%c", &c7) != EOF)
+		while (freadChar(file, "%c", &c7, "conf") != EOF)
 		{
-			fscanf(file, "< Highscores >%d < / Highscores %c", &(board->highscores), &highscoresTag);
+			freadIntChar(file, "< Highscores >%d < / Highscores %c", &(board->highscores), &highscoresTag, "conf");
 			if ((highscoresTag == '>') && (board->highscores >= 4) && ftell(file) < End)
 			{
 				highscoresflag = 1;

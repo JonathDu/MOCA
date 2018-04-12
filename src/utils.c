@@ -91,11 +91,11 @@ void highscore(int high)
 		printf("Le fichier highscores.text n'a pas ete trouve\n");
 		return;
 	}
-	fscanf(highsc, "%d", &highs[i]);
+	freadInt(highsc, "%d", &highs[i], "higs");
 	do
 	{
 		i++;
-		if (fscanf(highsc, "%d", &n) != EOF)
+		if (freadInt(highsc, "%d", &n, "higs") != EOF)
 		{
 			highs[i] = n;
 		}
