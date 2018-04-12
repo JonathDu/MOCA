@@ -97,7 +97,7 @@ typedef struct {
 int freadInt(FILE* f, char* c, int* value, const char *name);
 int freadChar(FILE* f, char* c, char* value, const char *name);
 int freadCharInt(FILE* f, char* c, char* value1, int* value2, const char *name);
-int Kleerandom();
+uint32_t Kleerandom();
 
 /**
  * \fn void readInt(int* val, const char* name)
