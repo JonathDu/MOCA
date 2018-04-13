@@ -1,3 +1,4 @@
+`source ~monniaud/env.sh`
 `clang -Iinclude -I${KLEE}/include -Wall  -DKLEE -emit-llvm -g -c  src/utils.c`
 `clang -Iinclude -I${KLEE}/include -Wall  -DKLEE -emit-llvm -g -c  src/IA.c`
 `clang -Iinclude -I${KLEE}/include -Wall  -DKLEE -emit-llvm -g -c  src/config.c`

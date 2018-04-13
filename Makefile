@@ -8,6 +8,7 @@ PATH_COV_TEST=Tests/CoverageTests/
 PATH_EXEC=bin/
 
 
+
 #Decommenter pour utiliser AFL
 #export AFLAGS=1
 #CFLAGS += -DAFL=$(AFLAGS)
@@ -45,8 +46,8 @@ info:
 	@echo "  profiling CONF= args=		: Creer les binaires et execute le fichier args passer en paramètres"
 	@echo "  afl CC=afl-gcc		: Compile avec afl et lance le fuzzing sur le fichier dans Tests/AFL/afl_in (make infoAfl pour plus d'info)"
 	@echo "  valgrind CONF= args=		: Lance Valgrind avec le fichier args en entrée, et ecrit dans le fichier Tests/Valgrind/log.txt"
-	@echo "  cache_miss CONF= args=	: Lance perf avec le fichier CONF comme fichier de configuration, et args en entrée"
-
+	@echo "  perf CONF= args=	: Lance perf avec le fichier CONF comme fichier de configuration, et args en entrée"
+	@echo "  klee CONF=			: Lance Klee avec le fichier CONF en entrée (il faut entrer ~monniaud/env.sh avant d'executer la commande)"
 
 
 infoAfl:
@@ -57,6 +58,7 @@ exec: $(EXEC)
 
 tests :
 	./Tests/UnitTests/executeTest.sh
+	./Tests/CoverageTests/script_coverage_ut.sh
 
 testsCompil : $(TESTS)
 
@@ -66,19 +68,22 @@ doxygen :
 	doxygen Doxygen/conf
 
 klee :
-	./Tests/Klee/cl.sh $(args)
+	./Tests/Klee/cl.sh $(CONF)
 
 afl : $(AFL)
 
 valgrind : $(EXEC)
 	./Tests/Valgrind/script_valgrind.sh $(CONF) $(args)
 
-cache_miss: $(EXEC)
+perf: $(EXEC)
 	sudo perf stat -e cache-misses,cache-references ./bin/connect4TheWin $(CONF) < $(args) > /dev/null
 
+coverage:
+	./Tests/CoverageTests/script_coverage_prog.sh $(args)
+	
 
 clean :
-	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex; rm Tests/Klee/*.bc
+	rm $(EXEC) $(TESTS) $(EXECPROFILE) $(COMM) $(GCNO) $(MAINCTW) $(MAINTESTS) $(GCDA) $(PATH_UNIT_TEST)*.gcno $(PATH_UNIT_TEST)*.gcda; rm -r Doxygen/html Doxygen/latex; rm Tests/Klee/*.bc; rm $(PATH_COV_TEST)*.gcno $(PATH_COV_TEST)*.gcda 
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC); mv $(PATH_SRC)*.o $(PATH_EXEC)
@@ -88,9 +93,9 @@ $(TESTS) : $(FIC_TESTS)
 
 $(EXECPROFILE): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(EXECPROFILE); mv $(PATH_SRC)*.o $(PATH_EXEC)
-	./bin/profile $(CONF) < $(args)
+	./bin/profile $(CONF) < $(args) > /dev/null
 	gprof bin/profile > Tests/ProfilingTests/resGprof
 
 $(AFL) : $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(AFL); mv $(PATH_SRC)*.o $(PATH_EXEC)
-	#./Tests/AFL/script_afl.sh
+	./Tests/AFL/script_afl.sh
