@@ -3,14 +3,9 @@
 #include "level.h"
 #include "utilTest.h"
 
+CuSuite *testLevelGetSuite()
+{
+    CuSuite *suite = CuSuiteNew();
 
-
-
-
-CuSuite* testLevelGetSuite() {
-    CuSuite* suite = CuSuiteNew();
-
-
-    
     return suite;
 }

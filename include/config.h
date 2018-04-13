@@ -48,12 +48,12 @@
 #define HARD 2
 /** @} */
 
-/*typedef struct {
+typedef struct {
 	int redoCol;
 	int undoCol;
 	int redoRow;
 	int undoRow;
-} UndoTab;*/
+} UndoTab;
 
 /**
  * \enum UndoRedo
@@ -61,17 +61,17 @@
  */
 typedef struct {
 	//UndoTab* undoTab;
-	int *redoCol; /**< Tableau contenant tous les numeros de colonne des coups annulés*/
-	int *undoCol; /**< Tableau contenant tous les numeros de colonne des coups joués*/
+	//int *redoCol; /**< Tableau contenant tous les numeros de colonne des coups annulés*/
+	//int *undoCol; /**< Tableau contenant tous les numeros de colonne des coups joués*/
 
 	int redoCounter; /**< Nombre de coup annulés qui ont été rejoué*/
 	int undoCounter; /**< Nombre de coup annulés*/
 
-	int *redoRow; /**< Tableau contenant tous les numeros de ligne des coups annulés*/
-	int *undoRow; /**< Tableau contenant tous les numeros de ligne des coups joués*/
+	//int *redoRow; /**< Tableau contenant tous les numeros de ligne des coups annulés*/
+	//int *undoRow; /**< Tableau contenant tous les numeros de ligne des coups joués*/
 
 	int nbCoupJouer;
-	
+
 } UndoRedo;
 
 /**
