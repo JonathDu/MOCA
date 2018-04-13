@@ -32,7 +32,7 @@ int Medium(Board *board, char characterIA, char characterJoueur, int *num) //con
 {
 	int scoreAncien;
 	int scoreNouveau;
-	for (int i = 0; i < board->width; i++) //parcours des colonnes 
+	for (int i = 0; i < board->width; i++) //parcours des colonnes
 	{
 		int ligne = getLigneLibre(board, i); //ligbe libre de la ieme colonne
 		if (ligne == -1 || ligne == -2) // si la ligne libre de la ième est la 1ere ou la deuxieme, alors pas possible que le joueur aligne 4 pions
@@ -74,6 +74,8 @@ void Hard(Board *board, char characterIA, char characterJoueur, int *num)
 		if (Medium(board, characterJoueur, characterIA, num) == 1) //si l'IA peut gagner le tour suivant grace a ce pion rajouté
 		{
 			if(getLigneLibre(board, *num) < 0)
+				board->board[ligne][i] = '\0';
+
 				continue;
 			board->board[getLigneLibre(board, *num) + 1][*num] = '\0';
 			*num = i;
