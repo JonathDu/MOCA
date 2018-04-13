@@ -89,6 +89,7 @@ void TestHard(CuTest *tc)
     }
     int num = 0;
     Hard(board, 'O', 'X', &num);
+    printf("bite\n");
     afficherBoard(board);
     CuAssertIntEquals(tc, num, 2);
     CuAssertIntEquals(tc, board->board[board->height - 3][2] != '\0', 1);

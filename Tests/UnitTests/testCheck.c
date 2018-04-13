@@ -131,7 +131,7 @@ void TestnumColonneVide(CuTest *tc)
   }
   CuAssertIntEquals(tc, numColonneVide(board, 0), 6);
 
-  libererBoard(board);
+  //libererBoard(board);
 }
 
 CuSuite *StrUtilGetSuite()

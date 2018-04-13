@@ -7,13 +7,13 @@ void undoRedo(char *x, Board *board, int num)
 	{
 		//Sauvegarde du numero de colonne du dernier jeton placer
 		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoCol = num;
-		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoRow = num;
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].undoRow = rowNum(num, board);
 		//board->undoRedo.undoCol[board->undoRedo.nbCoupJouer] = num;
 		//board->undoRedo.undoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);
 
 		//Sauvegarde du numero de ligne du dernier jeton placer
 		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoCol = num;
-		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoRow = num;
+		board->undoRedo.undoTab[board->undoRedo.nbCoupJouer].redoRow = rowNum(num, board);
 		//board->undoRedo.redoCol[board->undoRedo.nbCoupJouer] = num;
 		//board->undoRedo.redoRow[board->undoRedo.nbCoupJouer] = rowNum(num, board);
 	}
@@ -96,7 +96,8 @@ void saveLoad(int *num, Board *board)
 				break;
 			}
 		}
-	fclose(pfile);
+
 }
+fclose(pfile);
 	afficherBoard(board);
 }

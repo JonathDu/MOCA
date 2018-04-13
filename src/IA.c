@@ -73,10 +73,10 @@ void Hard(Board *board, char characterIA, char characterJoueur, int *num)
 		board->board[ligne][i] = characterIA; //l'IA rajoute un pion dans la ieme colonne
 		if (Medium(board, characterJoueur, characterIA, num) == 1) //si l'IA peut gagner le tour suivant grace a ce pion rajouté
 		{
-			if(getLigneLibre(board, *num) < 0)
+			if(getLigneLibre(board, *num) < 0){
 				board->board[ligne][i] = '\0';
-
 				continue;
+			}
 			board->board[getLigneLibre(board, *num) + 1][*num] = '\0';
 			*num = i;
 			return;

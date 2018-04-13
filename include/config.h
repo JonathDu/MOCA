@@ -60,7 +60,7 @@ typedef struct {
  * @brief Structure utilisée dans la structure Board. Elle concerne uniquement les mécanisme pour undo/redo
  */
 typedef struct {
-	//UndoTab* undoTab;
+	UndoTab* undoTab;
 	//int *redoCol; /**< Tableau contenant tous les numeros de colonne des coups annulés*/
 	//int *undoCol; /**< Tableau contenant tous les numeros de colonne des coups joués*/
 

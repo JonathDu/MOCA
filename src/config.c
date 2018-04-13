@@ -180,7 +180,7 @@ void libererundoRedo(Board *board)
 
 void XMLformating(char *confFile, Board *board)
 {
-	char c = 0, c1 = 0, c2 = 0, c3 = 0, c4 = 0, c5 = 0, c6 = 0, c7 = 0, widthTag = 0, heightTag = 0, highscoresTag = 0;
+	char c = 0,c2 = 0,c4 = 0, c5 = 0, c6 = 0, c7 = 0, widthTag = 0, heightTag = 0, highscoresTag = 0;
 	int start = 0, End = 0, flag1 = 0, flag2 = 0, widthflag = 0, heightflag = 0, highscoresflag = 0;
 
 	#ifdef AFL
