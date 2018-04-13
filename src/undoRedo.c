@@ -96,7 +96,7 @@ void saveLoad(int *num, Board *board)
 				break;
 			}
 		}
-	}
 	fclose(pfile);
+}
 	afficherBoard(board);
 }

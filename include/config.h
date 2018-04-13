@@ -61,22 +61,17 @@
  */
 typedef struct {
 	//UndoTab* undoTab;
-	int *redoCol; /**< c'est quoi ???  1. */
-	int *undoCol; /**< c'est quoi ???  2. */
+	int *redoCol; /**< Tableau contenant tous les numeros de colonne des coups annulés*/
+	int *undoCol; /**< Tableau contenant tous les numeros de colonne des coups joués*/
 
-	int redoCounter; /**< c'est quoi ???  4. */
-	int undoCounter; /**< c'est quoi ???  5. */
-	int compUndoCounter; /**< c'est quoi ???  6. */
+	int redoCounter; /**< Nombre de coup annulés qui ont été rejoué*/
+	int undoCounter; /**< Nombre de coup annulés*/
 
-	int *redoRow; /**< c'est quoi ???  7. */
-	int *undoRow; /**< c'est quoi ???  8. */
+	int *redoRow; /**< Tableau contenant tous les numeros de ligne des coups annulés*/
+	int *undoRow; /**< Tableau contenant tous les numeros de ligne des coups joués*/
 
 	int nbCoupJouer;
-
-	int k; /**< c'est quoi ???  10. */
-	int l; /**< c'est quoi ???  11. */
-	int c; /**< c'est quoi ???  14. */
-	int d; /**< c'est quoi ???  15. */
+	
 } UndoRedo;
 
 /**

@@ -17,11 +17,11 @@
 
 /**
  * \fn void undoRedo(char *x, Board *board, int num)
- * \brief Fonction qui ????
+ * \brief Fonction qui enregistre le coup joué ou annule le dernier coup ou rejoue le dernier coup annulé
  *
- * \param Param ????
+ * \param Caractère du joueur
  * \param Pointeur sur le Board
- * \param Param ????
+ * \param Numéro entrée par le joueur
  * \return Retourne le score
  */
 void undoRedo(char *x, Board *board, int num);
