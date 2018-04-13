@@ -1,6 +1,7 @@
 #include "CuTest.h"
 #include "IA.h"
 #include "utilTest.h"
+#include "undoRedo.h"
 
 void TestRowNum(CuTest *tc)
 {
@@ -39,7 +40,7 @@ void TestInitBoard(CuTest *tc)
 
     Board *board2 = initBoard("config2.xml");
     CuAssertIntEquals(tc, board2->width, 7);
-    CuAssertIntEquals(tc, board2->height, 6);
+    CuAssertIntEquals(tc, board2->height, 7);
 }
 
 void TestPurge(CuTest *tc)
@@ -54,7 +55,7 @@ void TestEasy(CuTest *tc)
 {
     Board *board = init2();
     int num = 0;
-    Easy(board, &num);
+    Easy(board, 'O', &num);
     CuAssertIntEquals(tc, checkEmpty(board), 0);
 }
 
@@ -71,7 +72,7 @@ void TestMedium(CuTest *tc)
     }
 
     int num = 0;
-    Medium(board, 'O', &num);
+    Medium(board, 'X', 'O', &num);
     afficherBoard(board);
     CuAssertIntEquals(tc, num, 1);
     CuAssertIntEquals(tc, board->board[board->height - 4][1] != '\0', 1);
@@ -87,7 +88,7 @@ void TestHard(CuTest *tc)
         board->board[i][0] = 'X';
     }
     int num = 0;
-    Hard(board, &num);
+    Hard(board, 'O', 'X', &num);
     afficherBoard(board);
     CuAssertIntEquals(tc, num, 2);
     CuAssertIntEquals(tc, board->board[board->height - 3][2] != '\0', 1);
@@ -95,7 +96,7 @@ void TestHard(CuTest *tc)
     board->board[board->height - 1][3] = 'X';
     board->board[board->height - 2][3] = 'X';
     board->board[board->height - 3][3] = 'X';
-    Hard(board, &num);
+    Hard(board, 'O', 'X', &num);
     CuAssertIntEquals(tc, num, 3);
     CuAssertIntEquals(tc, board->board[board->height - 4][3] == 'O', 1);
     afficherBoard(board);
@@ -104,13 +105,13 @@ void TestHard(CuTest *tc)
     board2->board[board2->height - 1][4] = 'O';
     board2->board[board2->height - 2][4] = 'O';
     board2->board[board2->height - 3][4] = 'O';
-    Hard(board2, &num);
+    Hard(board2, 'O', 'X', &num);
     CuAssertIntEquals(tc, num, 4);
     CuAssertIntEquals(tc, board2->board[board2->height - 4][4] == 'O', 1);
     afficherBoard(board2);
 
     Board *board3 = init2();
-    Hard(board3, &num);
+    Hard(board3, 'O', 'X', &num);
     CuAssertIntEquals(tc, checkEmpty(board), 0);
     afficherBoard(board3);
 }
